@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -12,30 +13,54 @@ import { SharedConversation } from "./pages/SharedConversation";
 import { RoomList } from "./components/rooms/RoomList";
 import { RoomChat } from "./components/rooms/RoomChat";
 import { AnalyticsDashboard } from "./components/analytics/AnalyticsDashboard";
+import { IntroScreen } from "./components/branding/IntroScreen";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/chat" element={<Chat />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/shared/:token" element={<SharedConversation />} />
-          <Route path="/rooms" element={<RoomList />} />
-          <Route path="/room/:roomId" element={<RoomChat />} />
-          <Route path="/analytics" element={<AnalyticsDashboard />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  const [showIntro, setShowIntro] = useState(true);
+  const [hasShownIntro, setHasShownIntro] = useState(false);
+
+  useEffect(() => {
+    // Check if intro has been shown this session
+    const introShown = sessionStorage.getItem('lucy-intro-shown');
+    if (introShown) {
+      setShowIntro(false);
+      setHasShownIntro(true);
+    }
+  }, []);
+
+  const handleIntroComplete = () => {
+    sessionStorage.setItem('lucy-intro-shown', 'true');
+    setShowIntro(false);
+    setHasShownIntro(true);
+  };
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        {showIntro && <IntroScreen onComplete={handleIntroComplete} />}
+        <div className={hasShownIntro ? 'animate-fade-in' : ''}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/chat" element={<Chat />} />
+              <Route path="/admin" element={<Admin />} />
+              <Route path="/shared/:token" element={<SharedConversation />} />
+              <Route path="/rooms" element={<RoomList />} />
+              <Route path="/room/:roomId" element={<RoomChat />} />
+              <Route path="/analytics" element={<AnalyticsDashboard />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </div>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
