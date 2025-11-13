@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Lock } from "lucide-react";
 import { ChatMessage } from "@/components/chat/ChatMessage";
+import { LucyLogo } from "@/components/branding/LucyLogo";
 
 export const SharedConversation = () => {
   const { token } = useParams<{ token: string }>();
@@ -126,6 +127,19 @@ export const SharedConversation = () => {
 
   return (
     <div className="min-h-screen bg-gradient-subtle">
+      {/* Lucy Branding Header */}
+      <header className="border-b border-border/50 bg-background/80 backdrop-blur-sm">
+        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <LucyLogo size="sm" showGlow />
+            <div>
+              <h2 className="font-bold text-lg">Lucy AI</h2>
+              <p className="text-xs text-muted-foreground">Shared Conversation</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
       <div className="container mx-auto p-6 max-w-4xl">
         <Card className="p-6 mb-4">
           <h1 className="text-2xl font-bold">{conversation?.title}</h1>
@@ -138,6 +152,17 @@ export const SharedConversation = () => {
           {messages.map((msg) => (
             <ChatMessage key={msg.id} message={msg} />
           ))}
+        </div>
+
+        {/* Lucy Branding Footer */}
+        <div className="mt-8 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-muted/50">
+            <LucyLogo size="sm" showGlow={false} />
+            <div className="text-sm">
+              <p className="font-medium">Powered by Lucy AI</p>
+              <p className="text-xs text-muted-foreground">Beyond Intelligence</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

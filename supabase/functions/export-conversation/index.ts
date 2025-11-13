@@ -78,7 +78,15 @@ serve(async (req) => {
         break;
 
       case 'json':
-        content = JSON.stringify({ conversation, messages }, null, 2);
+        content = JSON.stringify({
+          export_info: {
+            exported_from: "Lucy AI - Beyond Intelligence",
+            export_date: new Date().toISOString(),
+            format_version: "1.0"
+          },
+          conversation,
+          messages
+        }, null, 2);
         contentType = 'application/json';
         filename = `lucy-ai-${conversation.title.replace(/[^a-z0-9]/gi, '-')}.json`;
         break;
@@ -105,12 +113,15 @@ serve(async (req) => {
 });
 
 function generateTxtExport(conversation: any, messages: any[]): string {
-  let output = `Lucy AI Conversation Export\n`;
-  output += `================================\n\n`;
+  let output = `╔═══════════════════════════════════════════════════════════════╗\n`;
+  output += `║                     LUCY AI                                   ║\n`;
+  output += `║                 Beyond Intelligence                           ║\n`;
+  output += `║           Conversation Export - Text Format                   ║\n`;
+  output += `╚═══════════════════════════════════════════════════════════════╝\n\n`;
   output += `Title: ${conversation.title}\n`;
   output += `Created: ${new Date(conversation.created_at).toLocaleString()}\n`;
   output += `Tags: ${conversation.tags?.join(', ') || 'None'}\n`;
-  output += `\n================================\n\n`;
+  output += `\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
 
   for (const msg of messages) {
     const role = msg.role === 'user' ? 'You' : 'Lucy AI';
@@ -118,13 +129,27 @@ function generateTxtExport(conversation: any, messages: any[]): string {
     output += `[${timestamp}] ${role}:\n${msg.content}\n\n`;
   }
 
+  output += `\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+  output += `Exported from Lucy AI - Your Advanced AI Assistant\n`;
+  output += `Export Date: ${new Date().toLocaleString()}\n`;
+
   return output;
 }
 
 function generateMarkdownExport(conversation: any, messages: any[]): string {
-  let output = `# ${conversation.title}\n\n`;
-  output += `**Created:** ${new Date(conversation.created_at).toLocaleString()}\n`;
-  output += `**Tags:** ${conversation.tags?.join(', ') || 'None'}\n\n`;
+  let output = `---\n`;
+  output += `title: "${conversation.title}"\n`;
+  output += `exported_from: "Lucy AI - Beyond Intelligence"\n`;
+  output += `export_date: "${new Date().toISOString()}"\n`;
+  output += `conversation_created: "${conversation.created_at}"\n`;
+  output += `tags: [${conversation.tags?.map((t: string) => `"${t}"`).join(', ') || ''}]\n`;
+  output += `---\n\n`;
+  
+  output += `# 🌟 ${conversation.title}\n\n`;
+  output += `> **Powered by Lucy AI** - Beyond Intelligence\n\n`;
+  output += `**Created:** ${new Date(conversation.created_at).toLocaleString()}  \n`;
+  output += `**Tags:** ${conversation.tags?.join(', ') || 'None'}  \n`;
+  output += `**Exported:** ${new Date().toLocaleString()}\n\n`;
   output += `---\n\n`;
 
   for (const msg of messages) {
@@ -134,6 +159,12 @@ function generateMarkdownExport(conversation: any, messages: any[]): string {
     output += `${msg.content}\n\n`;
     output += `---\n\n`;
   }
+
+  output += `\n---\n\n`;
+  output += `<div align="center">\n\n`;
+  output += `**Lucy AI** - Your Advanced AI Assistant  \n`;
+  output += `*Beyond Intelligence*\n\n`;
+  output += `</div>\n`;
 
   return output;
 }

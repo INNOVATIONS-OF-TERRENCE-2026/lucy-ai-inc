@@ -10,6 +10,7 @@ import { VideoControls } from "@/components/background/VideoControls";
 import { PerformanceMonitor } from "@/components/background/PerformanceMonitor";
 import { ScenePlaylistManager } from "@/components/background/ScenePlaylistManager";
 import { BackgroundSettingsDialog } from "@/components/background/BackgroundSettingsDialog";
+import { LoadingScreen } from "@/components/branding/LoadingScreen";
 
 const Chat = () => {
   const navigate = useNavigate();
@@ -104,14 +105,7 @@ const Chat = () => {
   }, [navigate]);
 
   if (isLoading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-gradient-subtle">
-        <div className="text-center space-y-4">
-          <div className="w-16 h-16 bg-gradient-primary rounded-full animate-neural-pulse mx-auto" />
-          <p className="text-muted-foreground">Loading Lucy AI...</p>
-        </div>
-      </div>
-    );
+    return <LoadingScreen message="Loading Lucy AI..." />;
   }
 
   return (
