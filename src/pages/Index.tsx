@@ -1,11 +1,94 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import { Button } from "@/components/ui/button";
+import { Sparkles, MessageSquare, Shield, Zap } from "lucide-react";
 
 const Index = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if user is already logged in
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) {
+        navigate("/chat");
+      }
+    });
+  }, [navigate]);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-gradient-primary relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse-glow" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: "1s" }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: "2s" }} />
+      </div>
+
+      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 text-center">
+        {/* Logo */}
+        <div className="mb-8">
+          <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center animate-neural-pulse shadow-glow-violet mx-auto mb-6">
+            <Sparkles className="w-12 h-12 text-primary" />
+          </div>
+        </div>
+
+        {/* Title */}
+        <h1 className="text-6xl md:text-7xl font-bold mb-6 text-white">
+          Lucy AI
+        </h1>
+        <p className="text-xl md:text-2xl text-white/90 mb-4 max-w-2xl">
+          Beyond Intelligence
+        </p>
+        <p className="text-lg text-white/70 mb-12 max-w-xl">
+          Your advanced AI assistant powered by cutting-edge technology. 
+          Reason, create, and solve with Lucy.
+        </p>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 mb-16">
+          <Button
+            size="lg"
+            className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6"
+            onClick={() => navigate("/auth")}
+          >
+            <MessageSquare className="w-5 h-5 mr-2" />
+            Start Chatting
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            className="border-white text-white hover:bg-white/10 text-lg px-8 py-6"
+            onClick={() => navigate("/auth")}
+          >
+            Sign In
+          </Button>
+        </div>
+
+        {/* Features */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl">
+          <div className="glass-card p-6 text-white">
+            <Sparkles className="w-10 h-10 mb-4 mx-auto text-accent" />
+            <h3 className="text-xl font-semibold mb-2">Intelligent</h3>
+            <p className="text-white/70">
+              Powered by advanced AI models for exceptional reasoning and creativity
+            </p>
+          </div>
+          <div className="glass-card p-6 text-white">
+            <Zap className="w-10 h-10 mb-4 mx-auto text-accent" />
+            <h3 className="text-xl font-semibold mb-2">Fast</h3>
+            <p className="text-white/70">
+              Real-time streaming responses with instant feedback
+            </p>
+          </div>
+          <div className="glass-card p-6 text-white">
+            <Shield className="w-10 h-10 mb-4 mx-auto text-accent" />
+            <h3 className="text-xl font-semibold mb-2">Secure</h3>
+            <p className="text-white/70">
+              Your conversations are private and protected
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
