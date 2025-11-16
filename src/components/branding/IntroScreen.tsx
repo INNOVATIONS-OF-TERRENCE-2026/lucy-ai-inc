@@ -49,6 +49,9 @@ export const IntroScreen = ({ onComplete }: IntroScreenProps) => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: "2s" }} />
       </div>
 
+      {/* Darkened gradient overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/25 to-black/35 pointer-events-none" />
+
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center space-y-8">
         {/* Animated Logo */}
@@ -70,10 +73,10 @@ export const IntroScreen = ({ onComplete }: IntroScreenProps) => {
               : 'opacity-0 translate-y-4'
           }`}
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-white text-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-white text-center text-shadow-strong">
             Welcome to Lucy AI
           </h1>
-          <p className="text-xl text-white/80 text-center max-w-md">
+          <p className="text-xl text-white text-center max-w-md text-shadow-soft">
             Beyond Intelligence
           </p>
           

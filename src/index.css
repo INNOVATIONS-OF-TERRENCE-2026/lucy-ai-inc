@@ -246,4 +246,17 @@ All colors MUST be HSL.
   .glass-card {
     @apply bg-card/60 backdrop-blur-lg border border-border/40 shadow-lg;
   }
+
+  .glass-card-enhanced {
+    @apply backdrop-blur-xl rounded-lg border border-white/20;
+    background: rgba(255, 255, 255, 0.22);
+  }
+
+  .text-shadow-soft {
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  }
+
+  .text-shadow-strong {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45), 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
 }

@@ -123,6 +123,9 @@ const Auth = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: "2s" }} />
       </div>
 
+      {/* Darkened gradient overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/25 to-black/35 pointer-events-none" />
+
       <Card className="w-full max-w-md mx-4 glass-card relative z-10">
         <CardHeader className="text-center space-y-3">
           <div className="flex justify-center">

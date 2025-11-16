@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      ai_generated_scenes: {
+        Row: {
+          created_at: string
+          id: string
+          image_url: string | null
+          mood_tags: string[] | null
+          prompt: string
+          scene_data: Json
+          usage_count: number | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          mood_tags?: string[] | null
+          prompt: string
+          scene_data: Json
+          usage_count?: number | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          mood_tags?: string[] | null
+          prompt?: string
+          scene_data?: Json
+          usage_count?: number | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       analytics_events: {
         Row: {
           created_at: string
@@ -300,6 +333,39 @@ export type Database = {
           },
         ]
       }
+      performance_metrics: {
+        Row: {
+          device_info: Json
+          fps_average: number | null
+          id: string
+          memory_usage: number | null
+          recommended_quality: string | null
+          timestamp: string
+          user_id: string | null
+          video_quality: string | null
+        }
+        Insert: {
+          device_info: Json
+          fps_average?: number | null
+          id?: string
+          memory_usage?: number | null
+          recommended_quality?: string | null
+          timestamp?: string
+          user_id?: string | null
+          video_quality?: string | null
+        }
+        Update: {
+          device_info?: Json
+          fps_average?: number | null
+          id?: string
+          memory_usage?: number | null
+          recommended_quality?: string | null
+          timestamp?: string
+          user_id?: string | null
+          video_quality?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -396,6 +462,125 @@ export type Database = {
             columns: ["room_id"]
             isOneToOne: false
             referencedRelation: "chat_rooms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      scene_activity_log: {
+        Row: {
+          chat_context: Json | null
+          duration_seconds: number | null
+          id: string
+          interaction_quality: string | null
+          scene_type: string
+          timestamp: string
+          user_id: string
+        }
+        Insert: {
+          chat_context?: Json | null
+          duration_seconds?: number | null
+          id?: string
+          interaction_quality?: string | null
+          scene_type: string
+          timestamp?: string
+          user_id: string
+        }
+        Update: {
+          chat_context?: Json | null
+          duration_seconds?: number | null
+          id?: string
+          interaction_quality?: string | null
+          scene_type?: string
+          timestamp?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      scene_playlists: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          is_default: boolean
+          mood: string
+          name: string
+          scenes: Json
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_default?: boolean
+          mood: string
+          name: string
+          scenes?: Json
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_default?: boolean
+          mood?: string
+          name?: string
+          scenes?: Json
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      scene_preferences: {
+        Row: {
+          active_playlist_id: string | null
+          auto_theme_enabled: boolean | null
+          created_at: string
+          favorite_scenes: Json | null
+          geolocation_enabled: boolean | null
+          id: string
+          location_data: Json | null
+          parallax_intensity: number | null
+          time_based_themes: Json | null
+          transition_duration: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          active_playlist_id?: string | null
+          auto_theme_enabled?: boolean | null
+          created_at?: string
+          favorite_scenes?: Json | null
+          geolocation_enabled?: boolean | null
+          id?: string
+          location_data?: Json | null
+          parallax_intensity?: number | null
+          time_based_themes?: Json | null
+          transition_duration?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          active_playlist_id?: string | null
+          auto_theme_enabled?: boolean | null
+          created_at?: string
+          favorite_scenes?: Json | null
+          geolocation_enabled?: boolean | null
+          id?: string
+          location_data?: Json | null
+          parallax_intensity?: number | null
+          time_based_themes?: Json | null
+          transition_duration?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "scene_preferences_active_playlist_id_fkey"
+            columns: ["active_playlist_id"]
+            isOneToOne: false
+            referencedRelation: "scene_playlists"
             referencedColumns: ["id"]
           },
         ]

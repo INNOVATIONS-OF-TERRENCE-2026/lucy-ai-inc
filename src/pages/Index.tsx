@@ -26,6 +26,9 @@ const Index = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: "2s" }} />
       </div>
 
+      {/* Darkened gradient overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/25 to-black/35 pointer-events-none" />
+
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 text-center">
         {/* Logo */}
         <div className="mb-8">
@@ -39,13 +42,13 @@ const Index = () => {
         </div>
 
         {/* Title */}
-        <h1 className="text-6xl md:text-7xl font-bold mb-6 text-white">
+        <h1 className="text-6xl md:text-7xl font-bold mb-6 text-white text-shadow-strong">
           Lucy AI
         </h1>
-        <p className="text-xl md:text-2xl text-white/90 mb-4 max-w-2xl">
+        <p className="text-xl md:text-2xl text-white mb-4 max-w-2xl text-shadow-strong">
           Beyond Intelligence
         </p>
-        <p className="text-lg text-white/70 mb-12 max-w-xl">
+        <p className="text-lg text-white mb-12 max-w-xl text-shadow-soft">
           Your advanced AI assistant powered by cutting-edge technology. 
           Reason, create, and solve with Lucy.
         </p>
@@ -72,24 +75,24 @@ const Index = () => {
 
         {/* Features */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl">
-          <div className="glass-card p-6 text-white">
-            <Sparkles className="w-10 h-10 mb-4 mx-auto text-accent" />
-            <h3 className="text-xl font-semibold mb-2">Intelligent</h3>
-            <p className="text-white/70">
+          <div className="glass-card-enhanced p-6">
+            <Sparkles className="w-10 h-10 mb-4 mx-auto text-white/80" />
+            <h3 className="text-xl font-semibold mb-2 text-[rgb(245,245,255)]">Intelligent</h3>
+            <p className="text-[rgb(245,245,255)]/90">
               Powered by advanced AI models for exceptional reasoning and creativity
             </p>
           </div>
-          <div className="glass-card p-6 text-white">
-            <Zap className="w-10 h-10 mb-4 mx-auto text-accent" />
-            <h3 className="text-xl font-semibold mb-2">Fast</h3>
-            <p className="text-white/70">
+          <div className="glass-card-enhanced p-6">
+            <Zap className="w-10 h-10 mb-4 mx-auto text-white/80" />
+            <h3 className="text-xl font-semibold mb-2 text-[rgb(245,245,255)]">Fast</h3>
+            <p className="text-[rgb(245,245,255)]/90">
               Real-time streaming responses with instant feedback
             </p>
           </div>
-          <div className="glass-card p-6 text-white">
-            <Shield className="w-10 h-10 mb-4 mx-auto text-accent" />
-            <h3 className="text-xl font-semibold mb-2">Secure</h3>
-            <p className="text-white/70">
+          <div className="glass-card-enhanced p-6">
+            <Shield className="w-10 h-10 mb-4 mx-auto text-white/80" />
+            <h3 className="text-xl font-semibold mb-2 text-[rgb(245,245,255)]">Secure</h3>
+            <p className="text-[rgb(245,245,255)]/90">
               Your conversations are private and protected
             </p>
           </div>
