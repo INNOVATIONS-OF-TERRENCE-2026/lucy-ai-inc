@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
 
 interface StructuredDataProps {
-  type: 'WebSite' | 'Organization' | 'SoftwareApplication';
+  type: 'WebSite' | 'Organization' | 'SoftwareApplication' | 'AboutPage' | 'Blog' | 'CollectionPage';
+  name?: string;
+  description?: string;
   data?: any;
 }
 
-export const StructuredData = ({ type, data }: StructuredDataProps) => {
+export const StructuredData = ({ type, name, description, data }: StructuredDataProps) => {
   useEffect(() => {
     const getStructuredData = () => {
       const baseUrl = 'https://lucylounge.org';
@@ -68,6 +70,49 @@ export const StructuredData = ({ type, data }: StructuredDataProps) => {
             ]
           };
         
+        case 'AboutPage':
+          return {
+            '@context': 'https://schema.org',
+            '@type': 'AboutPage',
+            name: name || 'About Lucy AI',
+            description: description || 'Learn about Lucy AI and its creator Terrence Milliner Sr.',
+            url: `${baseUrl}/about`,
+            mainEntity: {
+              '@type': 'Organization',
+              name: 'Lucy AI',
+              founder: {
+                '@type': 'Person',
+                name: 'Terrence Milliner Sr.'
+              }
+            }
+          };
+        
+        case 'Blog':
+          return {
+            '@context': 'https://schema.org',
+            '@type': 'Blog',
+            name: name || 'Lucy AI Blog',
+            description: description || 'AI insights, product updates, and tutorials',
+            url: `${baseUrl}/blog`,
+            publisher: {
+              '@type': 'Organization',
+              name: 'Lucy AI',
+              logo: {
+                '@type': 'ImageObject',
+                url: `${baseUrl}/lucy-og-image.png`
+              }
+            }
+          };
+        
+        case 'CollectionPage':
+          return {
+            '@context': 'https://schema.org',
+            '@type': 'CollectionPage',
+            name: name || 'Lucy AI Tools',
+            description: description || 'Collection of AI-powered tools',
+            url: `${baseUrl}/tools`
+          };
+        
         default:
           return null;
       }
@@ -85,7 +130,7 @@ export const StructuredData = ({ type, data }: StructuredDataProps) => {
         document.head.removeChild(script);
       };
     }
-  }, [type, data]);
+  }, [type, name, description, data]);
 
   return null;
 };
