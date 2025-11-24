@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
+import { useCalmMode } from '@/hooks/useCalmMode';
 
 interface ParallaxEnvironmentProps {
   mode?: 'cosmic' | 'neon' | 'nature' | 'noir' | 'rain';
@@ -12,10 +13,17 @@ export const ParallaxEnvironment = ({
   intensity = 0.5,
   children 
 }: ParallaxEnvironmentProps) => {
+  const { calmMode } = useCalmMode();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
+    if (calmMode) {
+      setMousePosition({ x: 0, y: 0 });
+      setTilt({ x: 0, y: 0 });
+      return;
+    }
+
     const handleMouseMove = (e: MouseEvent) => {
       const x = (e.clientX / window.innerWidth - 0.5) * 2;
       const y = (e.clientY / window.innerHeight - 0.5) * 2;
@@ -37,7 +45,7 @@ export const ParallaxEnvironment = ({
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('deviceorientation', handleOrientation);
     };
-  }, []);
+  }, [calmMode]);
 
   const getThemeStyles = () => {
     switch (mode) {
@@ -75,8 +83,10 @@ export const ParallaxEnvironment = ({
   };
 
   const theme = getThemeStyles();
-  const offsetX = (mousePosition.x + tilt.x) * intensity * 20;
-  const offsetY = (mousePosition.y + tilt.y) * intensity * 20;
+  const effectiveIntensity = calmMode ? 0 : intensity;
+  const particleCount = calmMode ? 0.3 : 1;
+  const offsetX = (mousePosition.x + tilt.x) * effectiveIntensity * 20;
+  const offsetY = (mousePosition.y + tilt.y) * effectiveIntensity * 20;
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none">
@@ -88,7 +98,7 @@ export const ParallaxEnvironment = ({
         className="absolute inset-0"
         style={{ transform: `translate(${offsetX * 0.3}px, ${offsetY * 0.3}px)` }}
       >
-        {Array.from({ length: 30 }).map((_, i) => (
+        {Array.from({ length: Math.floor(30 * particleCount) }).map((_, i) => (
           <div
             key={`far-${i}`}
             className={cn('absolute rounded-full opacity-20', theme.particles)}
@@ -97,7 +107,7 @@ export const ParallaxEnvironment = ({
               height: Math.random() * 3 + 1 + 'px',
               left: Math.random() * 100 + '%',
               top: Math.random() * 100 + '%',
-              animation: `float ${Math.random() * 10 + 15}s infinite ease-in-out`
+              animation: calmMode ? `float-calm ${Math.random() * 15 + 20}s infinite ease-in-out` : `float ${Math.random() * 10 + 15}s infinite ease-in-out`
             }}
           />
         ))}
@@ -112,7 +122,7 @@ export const ParallaxEnvironment = ({
           'absolute inset-0 bg-gradient-to-br opacity-30 blur-3xl',
           `${theme.glow}`
         )} />
-        {Array.from({ length: 15 }).map((_, i) => (
+        {Array.from({ length: Math.floor(15 * particleCount) }).map((_, i) => (
           <div
             key={`mid-${i}`}
             className={cn('absolute rounded-full opacity-40', theme.particles)}
@@ -121,7 +131,7 @@ export const ParallaxEnvironment = ({
               height: Math.random() * 4 + 2 + 'px',
               left: Math.random() * 100 + '%',
               top: Math.random() * 100 + '%',
-              animation: `float ${Math.random() * 8 + 12}s infinite ease-in-out`,
+              animation: calmMode ? `float-calm ${Math.random() * 12 + 18}s infinite ease-in-out` : `float ${Math.random() * 8 + 12}s infinite ease-in-out`,
               animationDelay: Math.random() * 5 + 's'
             }}
           />
@@ -133,7 +143,7 @@ export const ParallaxEnvironment = ({
         className="absolute inset-0"
         style={{ transform: `translate(${offsetX}px, ${offsetY}px)` }}
       >
-        {Array.from({ length: 8 }).map((_, i) => (
+        {Array.from({ length: Math.floor(8 * particleCount) }).map((_, i) => (
           <div
             key={`fore-${i}`}
             className={cn('absolute rounded-full opacity-60 blur-sm', theme.particles)}
@@ -142,7 +152,7 @@ export const ParallaxEnvironment = ({
               height: Math.random() * 6 + 3 + 'px',
               left: Math.random() * 100 + '%',
               top: Math.random() * 100 + '%',
-              animation: `float ${Math.random() * 6 + 8}s infinite ease-in-out`,
+              animation: calmMode ? `float-calm ${Math.random() * 10 + 15}s infinite ease-in-out` : `float ${Math.random() * 6 + 8}s infinite ease-in-out`,
               animationDelay: Math.random() * 3 + 's'
             }}
           />

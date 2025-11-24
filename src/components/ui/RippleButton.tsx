@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import { Button, ButtonProps } from './button';
 import { cn } from '@/lib/utils';
+import { useCalmMode } from '@/hooks/useCalmMode';
 
 interface Ripple {
   x: number;
@@ -14,23 +15,26 @@ export const RippleButton = ({
   onClick,
   ...props 
 }: ButtonProps) => {
+  const { calmMode } = useCalmMode();
   const [ripples, setRipples] = useState<Ripple[]>([]);
 
   const handleClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
-    const button = e.currentTarget;
-    const rect = button.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    const newRipple = { x, y, id: Date.now() };
-    setRipples(prev => [...prev, newRipple]);
+    if (!calmMode) {
+      const button = e.currentTarget;
+      const rect = button.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const newRipple = { x, y, id: Date.now() };
+      setRipples(prev => [...prev, newRipple]);
 
-    setTimeout(() => {
-      setRipples(prev => prev.filter(r => r.id !== newRipple.id));
-    }, 600);
+      setTimeout(() => {
+        setRipples(prev => prev.filter(r => r.id !== newRipple.id));
+      }, 600);
+    }
 
     onClick?.(e);
-  }, [onClick]);
+  }, [onClick, calmMode]);
 
   return (
     <Button

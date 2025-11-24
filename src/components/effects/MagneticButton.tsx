@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Button, ButtonProps } from '../ui/button';
 import { cn } from '@/lib/utils';
+import { useCalmMode } from '@/hooks/useCalmMode';
 
 interface MagneticButtonProps extends ButtonProps {
   magneticStrength?: number;
@@ -12,12 +13,16 @@ export const MagneticButton = ({
   magneticStrength = 20,
   ...props 
 }: MagneticButtonProps) => {
+  const { calmMode } = useCalmMode();
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const button = buttonRef.current;
-    if (!button) return;
+    if (!button || calmMode) {
+      setPosition({ x: 0, y: 0 });
+      return;
+    }
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = button.getBoundingClientRect();
@@ -51,7 +56,7 @@ export const MagneticButton = ({
       window.removeEventListener('mousemove', handleMouseMove);
       button.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [magneticStrength]);
+  }, [magneticStrength, calmMode]);
 
   return (
     <Button

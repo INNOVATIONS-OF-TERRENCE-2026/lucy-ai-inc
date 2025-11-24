@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useRef } from 'react';
+import { useCalmMode } from './useCalmMode';
 
 export const useSoundSystem = () => {
+  const { calmMode } = useCalmMode();
   const audioContextRef = useRef<AudioContext | null>(null);
   const isMutedRef = useRef(false);
 
@@ -30,13 +32,15 @@ export const useSoundSystem = () => {
     oscillator.frequency.value = frequency;
     oscillator.type = 'sine';
     
+    const adjustedVolume = calmMode ? volume * 0.4 : volume;
+    
     gainNode.gain.setValueAtTime(0, ctx.currentTime);
-    gainNode.gain.linearRampToValueAtTime(volume, ctx.currentTime + 0.01);
+    gainNode.gain.linearRampToValueAtTime(adjustedVolume, ctx.currentTime + 0.01);
     gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + duration);
 
     oscillator.start(ctx.currentTime);
     oscillator.stop(ctx.currentTime + duration);
-  }, []);
+  }, [calmMode]);
 
   const playClickSound = useCallback(() => {
     playTone(800, 0.05, 0.08);
