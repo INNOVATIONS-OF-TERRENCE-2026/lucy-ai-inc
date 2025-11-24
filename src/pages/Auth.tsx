@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { LucyLogo } from "@/components/branding/LucyLogo";
 import { CosmicBackground } from "@/components/cosmic/CosmicBackground";
+import { X } from "lucide-react";
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -120,7 +121,18 @@ const Auth = () => {
       <CosmicBackground />
 
       <Card className="w-full max-w-md mx-4 glass-card-enhanced relative z-10 shadow-glow-violet">
-        <CardHeader className="text-center space-y-3">
+        {/* Close Button */}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => navigate("/")}
+          aria-label="Close"
+          className="absolute top-4 right-4 z-20 h-10 w-10 rounded-full glass-card border border-primary/30 hover:border-primary/60 hover:shadow-glow-violet hover:scale-105 transition-all duration-300 text-cosmic-silver hover:text-cosmic-gold"
+        >
+          <X className="h-5 w-5" />
+        </Button>
+
+        <CardHeader className="text-center space-y-3 pt-6">
           <div className="flex justify-center">
             <LucyLogo size="lg" showGlow />
           </div>
