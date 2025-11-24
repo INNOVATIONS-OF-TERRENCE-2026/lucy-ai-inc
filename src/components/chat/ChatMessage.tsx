@@ -37,19 +37,19 @@ export function ChatMessage({ message, isStreaming }: ChatMessageProps) {
   };
 
   return (
-    <div className={`flex gap-4 ${isUser ? 'justify-end' : 'justify-start'} mb-6`}>
+    <div className={`flex gap-4 ${isUser ? 'justify-end' : 'justify-start'} animate-fade-in`}>
       {!isUser && (
         <LucyLogo size="sm" showGlow className="flex-shrink-0" />
       )}
       
-      <div className={`max-w-[85%] md:max-w-[80%] ${isUser ? 'order-first' : ''}`}>
+      <div className={`max-w-[85%] md:max-w-[75%] ${isUser ? 'order-first' : ''}`}>
         <div className={`
-          rounded-2xl px-5 py-4
+          rounded-3xl px-6 py-4
           ${isUser 
-            ? 'bg-gradient-primary text-white ml-auto shadow-glow-violet' 
-            : 'glass-card border border-border/50'
+            ? 'bg-gradient-button text-white ml-auto shadow-glow-magenta hover:shadow-glow-divine transition-shadow duration-300' 
+            : 'glass-card-enhanced border border-primary/40 shadow-glow-violet'
           }
-          ${isStreaming ? 'animate-fade-in' : ''}
+          transform transition-all duration-300
         `}>
           {isUser ? (
             <p className="whitespace-pre-wrap break-words leading-relaxed">{message.content}</p>

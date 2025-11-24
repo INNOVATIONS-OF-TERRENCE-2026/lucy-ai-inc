@@ -17,9 +17,14 @@ import { ProactiveSuggestions } from "./ProactiveSuggestions";
 import { ContextIndicator } from "./ContextIndicator";
 import { MemoryPanel } from "./MemoryPanel";
 import { SmartSceneSuggestion } from "./SmartSceneSuggestion";
+import { ChatSettings } from "./ChatSettings";
+import { ReadingProgressBar } from "./ReadingProgressBar";
+import { TimestampDivider } from "./TimestampDivider";
 import { useSmartSceneSuggestion } from "@/hooks/useSmartSceneSuggestion";
 import { useMemoryManager } from "@/hooks/useMemoryManager";
 import { useContextAnalyzer } from "@/hooks/useContextAnalyzer";
+import { useReadingMode } from "@/hooks/useReadingMode";
+import { useStreamingSpeed } from "@/hooks/useStreamingSpeed";
 
 interface ChatInterfaceProps {
   userId: string;
@@ -47,6 +52,8 @@ export function ChatInterface({ userId, conversationId, onConversationCreated }:
   const { suggestedScene } = useSmartSceneSuggestion(conversationId);
   const { memories, storeMemory } = useMemoryManager(userId);
   const { analyzeContext } = useContextAnalyzer(conversationId);
+  const { readingMode, setReadingMode, getSpacingClass } = useReadingMode();
+  const { speed, setSpeed, getDelay } = useStreamingSpeed();
 
   useEffect(() => {
     if (conversationId) {
@@ -377,27 +384,35 @@ export function ChatInterface({ userId, conversationId, onConversationCreated }:
 
   return (
     <main className="flex-1 flex flex-col h-screen relative">
+      <ReadingProgressBar isStreaming={!!streamingMessage} />
+      
       {/* Header */}
-      <header className="h-16 border-b border-border/50 flex items-center justify-between px-6 backdrop-blur-xl bg-background/60">
+      <header className="h-16 border-b border-primary/20 flex items-center justify-between px-6 backdrop-blur-xl glass shadow-glow-violet">
         <div className="flex items-center gap-3">
           <SidebarTrigger />
           <LucyLogo size="sm" showGlow />
           <div>
-            <h1 className="font-semibold">{conversationTitle}</h1>
-            <p className="text-xs text-muted-foreground">Powered by advanced intelligence</p>
+            <h1 className="font-semibold bg-gradient-button bg-clip-text text-transparent">{conversationTitle}</h1>
+            <p className="text-xs text-muted-foreground">Divine Intelligence</p>
           </div>
         </div>
         <div className="flex items-center gap-2">
+          <ChatSettings
+            readingMode={readingMode}
+            setReadingMode={setReadingMode}
+            streamingSpeed={speed}
+            setStreamingSpeed={setSpeed}
+          />
           <MemoryPanel userId={userId} />
-          <Button variant="ghost" size="sm" onClick={() => setShowSearch(true)}>
+          <Button variant="ghost" size="sm" onClick={() => setShowSearch(true)} className="glass-card border-primary/30">
             <Search className="w-4 h-4" />
           </Button>
           {conversationId && (
-            <Button variant="ghost" size="sm" onClick={() => setShowExport(true)}>
+            <Button variant="ghost" size="sm" onClick={() => setShowExport(true)} className="glass-card border-primary/30">
               <Download className="w-4 h-4" />
             </Button>
           )}
-          <Button variant="ghost" size="sm" onClick={() => setShowModelSelector(!showModelSelector)}>
+          <Button variant="ghost" size="sm" onClick={() => setShowModelSelector(!showModelSelector)} className="glass-card border-primary/30">
             <Settings2 className="w-4 h-4" />
           </Button>
         </div>
@@ -419,27 +434,35 @@ export function ChatInterface({ userId, conversationId, onConversationCreated }:
       )}
 
       {/* Messages */}
-      <ScrollArea className="flex-1 px-6 py-8">
+      <ScrollArea className="flex-1 px-6 py-8 scroll-smooth">
         {messages.length === 0 && !streamingMessage && (
           <div className="flex flex-col items-center justify-center h-full text-center space-y-6 max-w-2xl mx-auto">
             <LucyLogo size="xl" showGlow />
-            <div>
-              <h2 className="text-3xl font-bold mb-3 bg-gradient-primary bg-clip-text text-transparent">
+            <div className="glass-card-enhanced p-10 rounded-3xl border border-primary/40 shadow-glow-divine">
+              <h2 className="text-4xl font-bold mb-4 bg-gradient-button bg-clip-text text-transparent">
                 Welcome to Lucy AI
               </h2>
               <p className="text-muted-foreground text-lg">
-                Your advanced AI assistant is ready to help. Ask me anything!
+                Divine intelligence awaits. Ask me anything!
               </p>
             </div>
           </div>
         )}
 
-        <div className="max-w-4xl mx-auto space-y-6">
+        <div className={`max-w-4xl mx-auto ${getSpacingClass()} transition-all duration-300`}>
           {conversationId && <ContextIndicator conversationId={conversationId} />}
           
-          {messages.map((message) => (
-            <ChatMessage key={message.id} message={message} />
-          ))}
+          {messages.map((message, index) => {
+            const showDivider = index === 0 || 
+              (new Date(message.created_at).getTime() - new Date(messages[index - 1].created_at).getTime()) > 3600000;
+            
+            return (
+              <div key={message.id}>
+                {showDivider && <TimestampDivider timestamp={message.created_at} />}
+                <ChatMessage message={message} />
+              </div>
+            );
+          })}
           
           {toolResults && <ToolResultDisplay results={toolResults.results} />}
           
@@ -455,9 +478,9 @@ export function ChatInterface({ userId, conversationId, onConversationCreated }:
           )}
           
           {isLoading && !streamingMessage && (
-            <div className="flex items-center gap-3 text-muted-foreground">
-              <Loader2 className="w-4 h-4 animate-spin" />
-              <span>Lucy is thinking...</span>
+            <div className="flex items-center gap-3 text-muted-foreground glass-card px-6 py-4 rounded-2xl border border-primary/30 w-fit">
+              <Loader2 className="w-5 h-5 animate-spin text-primary" />
+              <span className="font-medium">Lucy is contemplating...</span>
             </div>
           )}
           
@@ -475,8 +498,8 @@ export function ChatInterface({ userId, conversationId, onConversationCreated }:
         </div>
       </ScrollArea>
 
-      {/* Input */}
-      <div className="border-t border-border/50 p-4 md:p-6 backdrop-blur-xl bg-background/80">
+      {/* Enhanced Input */}
+      <div className="border-t border-primary/20 p-4 md:p-6 backdrop-blur-xl glass shadow-glow-violet">
         <div className="max-w-5xl mx-auto space-y-3">
           <FileUploadZone
             selectedFiles={selectedFiles}
@@ -488,15 +511,15 @@ export function ChatInterface({ userId, conversationId, onConversationCreated }:
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Ask Lucy anything..."
-              className="pr-16 min-h-[80px] md:min-h-[100px] max-h-[300px] resize-none text-base md:text-lg px-5 py-4 rounded-2xl border-2 border-primary/30 focus:border-primary/60 shadow-glow-violet transition-all bg-card/90 backdrop-blur-sm"
+              placeholder="Message Lucy..."
+              className="pr-20 min-h-[90px] md:min-h-[110px] max-h-[300px] resize-none text-base md:text-lg px-6 py-5 rounded-3xl border-2 border-primary/40 focus:border-primary/70 focus:shadow-glow-divine transition-all duration-300 glass-card-enhanced"
               disabled={isLoading}
             />
             <Button
               onClick={handleSend}
               disabled={(!input.trim() && selectedFiles.length === 0) || isLoading}
               size="lg"
-              className="absolute bottom-3 right-3 bg-gradient-button hover:shadow-glow-magenta transition-all rounded-xl h-12 w-12 shadow-glow-violet"
+              className="absolute bottom-4 right-4 bg-gradient-button hover:shadow-glow-divine hover:scale-105 active:scale-95 transition-all duration-200 rounded-2xl h-14 w-14"
             >
               {isLoading ? (
                 <Loader2 className="w-5 h-5 animate-spin" />
