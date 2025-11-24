@@ -1,4 +1,5 @@
 import { SEOHead } from '@/components/seo/SEOHead';
+import { StructuredData } from '@/components/seo/StructuredData';
 import { Footer } from '@/components/landing/Footer';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -54,7 +55,13 @@ const Blog = () => {
         title="Blog - Lucy AI | AI Insights, Tutorials, and Updates"
         description="Stay updated with Lucy AI's latest features, AI technology insights, tutorials, and product updates. Learn how to get the most out of your AI assistant."
         keywords="Lucy AI blog, AI insights, AI tutorials, AI technology, product updates, AI news"
-        canonical="https://lucy-ai.app/blog"
+        url="https://lucylounge.org/blog"
+        canonical="https://lucylounge.org/blog"
+      />
+      <StructuredData 
+        type="Blog"
+        name="Lucy AI Blog"
+        description="AI insights, product updates, and tutorials"
       />
       
       <div className="min-h-screen bg-gradient-primary relative overflow-hidden">

@@ -1,4 +1,5 @@
 import { SEOHead } from '@/components/seo/SEOHead';
+import { StructuredData } from '@/components/seo/StructuredData';
 import { Footer } from '@/components/landing/Footer';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
@@ -19,6 +20,11 @@ const About = () => {
         keywords="Lucy AI, Terrence Milliner, AI architect, software engineer, about Lucy, Lucy creator"
         url="https://lucylounge.org/about"
         canonical="https://lucylounge.org/about"
+      />
+      <StructuredData 
+        type="AboutPage"
+        name="About Lucy AI"
+        description="Lucy AI is a next-generation digital companion engineered by Terrence Milliner Sr."
       />
       
       <div className="min-h-screen relative overflow-hidden">

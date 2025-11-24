@@ -1,4 +1,5 @@
 import { SEOHead } from '@/components/seo/SEOHead';
+import { StructuredData } from '@/components/seo/StructuredData';
 import { Footer } from '@/components/landing/Footer';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -98,6 +99,11 @@ const Tools = () => {
         image="/og-tools.png"
         url="https://lucylounge.org/tools"
         canonical="https://lucylounge.org/tools"
+      />
+      <StructuredData 
+        type="CollectionPage"
+        name="Lucy AI Tools"
+        description="Internal AI tools powered by Lovable Cloud"
       />
       
       <div className="min-h-screen bg-gradient-primary relative overflow-hidden">
