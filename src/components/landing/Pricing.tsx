@@ -105,11 +105,8 @@ export const Pricing = () => {
               </ul>
 
               <Button 
-                className={`w-full ${
-                  plan.popular 
-                    ? 'bg-accent text-accent-foreground hover:bg-accent/90' 
-                    : 'bg-white text-primary hover:bg-white/90'
-                }`}
+                className="w-full" 
+                variant={plan.popular ? "gradient" : "outline"}
                 size="lg"
                 onClick={() => navigate('/auth')}
               >

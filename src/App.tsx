@@ -22,6 +22,7 @@ import { AnalyticsDashboard } from "./components/analytics/AnalyticsDashboard";
 import { IntroScreen } from "./components/branding/IntroScreen";
 import { AnalyticsTracker } from "./components/analytics/AnalyticsTracker";
 import { InstallPrompt } from "./components/pwa/InstallPrompt";
+import { OfflineBanner } from "./components/pwa/OfflineBanner";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,7 @@ const App = () => {
         <Sonner />
         {showIntro && <IntroScreen onComplete={handleIntroComplete} />}
         <InstallPrompt />
+        <OfflineBanner />
         <div className={hasShownIntro ? 'animate-fade-in' : ''}>
           <BrowserRouter>
             <AnalyticsTracker />

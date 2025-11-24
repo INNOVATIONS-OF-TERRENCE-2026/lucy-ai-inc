@@ -60,34 +60,36 @@ export const PushNotifications = () => {
   }
 
   return (
-    <Card className="p-4">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          {permission === 'granted' ? (
-            <Bell className="w-5 h-5 text-primary" />
-          ) : (
-            <BellOff className="w-5 h-5 text-muted-foreground" />
-          )}
+    <Card className="p-5 border-2 border-border/50 hover:border-primary/30 transition-colors">
+      <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center gap-4">
+          <div className={`p-3 rounded-[12px] ${permission === 'granted' ? 'bg-gradient-button' : 'bg-muted'}`}>
+            {permission === 'granted' ? (
+              <Bell className="w-5 h-5 text-white" />
+            ) : (
+              <BellOff className="w-5 h-5 text-muted-foreground" />
+            )}
+          </div>
           <div>
-            <h3 className="font-semibold">Push Notifications</h3>
-            <p className="text-sm text-muted-foreground">
+            <h3 className="font-semibold text-base">Push Notifications</h3>
+            <p className="text-sm text-muted-foreground mt-0.5">
               {permission === 'granted' 
-                ? 'Enabled - You\'ll receive notifications' 
+                ? '✓ Enabled - You\'ll receive notifications' 
                 : 'Get notified about new messages and updates'}
             </p>
           </div>
         </div>
         
         {permission !== 'granted' && (
-          <Button onClick={requestPermission}>
+          <Button onClick={requestPermission} variant="gradient" size="sm">
             Enable
           </Button>
         )}
         
         {permission === 'granted' && (
-          <Button variant="outline" disabled>
+          <Button variant="outline" disabled size="sm">
             <Bell className="w-4 h-4 mr-2" />
-            Enabled
+            Active
           </Button>
         )}
       </div>

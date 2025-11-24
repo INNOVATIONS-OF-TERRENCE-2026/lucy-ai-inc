@@ -18,57 +18,57 @@ export const Hero = () => {
       {/* Darkened gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/25 to-black/35 pointer-events-none" />
 
-      <div className="relative z-10 max-w-4xl mx-auto text-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-32 text-center">
         {/* Lucy Avatar */}
-        <div className="mb-8 flex justify-center">
-          <LucyAvatar size="xl" state="happy" />
+        <div className="mb-10 flex justify-center animate-pulse-glow">
+          <LucyAvatar size="xl" state="happy" className="drop-shadow-2xl" />
         </div>
 
         {/* Hero text */}
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white text-shadow-strong">
-          Meet Lucy AI
+        <h1 className="text-6xl md:text-8xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-blue-200 text-shadow-strong leading-tight">
+          Lucy AI
+          <span className="block text-5xl md:text-6xl mt-4 bg-gradient-button bg-clip-text text-transparent">
+            Beyond Intelligence
+          </span>
         </h1>
-        <p className="text-2xl md:text-3xl text-white mb-4 text-shadow-strong">
-          Beyond Intelligence
-        </p>
-        <p className="text-lg md:text-xl text-white/90 mb-12 max-w-2xl mx-auto text-shadow-soft">
-          Your advanced AI assistant with reasoning, vision, memory, and creativity. 
-          Experience the future of AI conversation today.
+        
+        <p className="text-xl md:text-2xl text-white/95 mb-14 max-w-3xl mx-auto text-shadow-soft leading-relaxed">
+          Experience next-generation AI with advanced reasoning, multimodal vision, persistent memory, and creative tools—all powered by cutting-edge technology
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+        <div className="flex flex-col sm:flex-row gap-5 justify-center mb-20">
           <Button
             size="lg"
-            className="bg-white text-primary hover:bg-white/95 font-semibold text-lg px-8 py-6 h-auto shadow-lg hover:shadow-xl transition-all"
+            variant="gradient"
             onClick={() => navigate('/auth')}
           >
             <MessageSquare className="w-5 h-5 mr-2" />
-            Start Free
+            🚀 Start Free
           </Button>
           <Button
             size="lg"
-            className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-lg px-8 py-6 h-auto shadow-lg hover:shadow-xl transition-all"
+            variant="outline"
             onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
           >
             <Sparkles className="w-5 h-5 mr-2" />
-            Explore Features
+            ✨ Explore Features
           </Button>
         </div>
 
         {/* Social proof */}
-        <div className="flex flex-wrap justify-center gap-8 text-white/80 text-sm">
-          <div>
-            <div className="text-2xl font-bold text-white">10K+</div>
-            <div>Active Users</div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+          <div className="text-center glass-card-enhanced p-6 hover:scale-105 transition-transform">
+            <div className="text-4xl font-bold bg-gradient-button bg-clip-text text-transparent mb-2">500K+</div>
+            <div className="text-white/80 text-sm">Active Users</div>
           </div>
-          <div>
-            <div className="text-2xl font-bold text-white">1M+</div>
-            <div>Conversations</div>
+          <div className="text-center glass-card-enhanced p-6 hover:scale-105 transition-transform">
+            <div className="text-4xl font-bold bg-gradient-button bg-clip-text text-transparent mb-2">10M+</div>
+            <div className="text-white/80 text-sm">Conversations</div>
           </div>
-          <div>
-            <div className="text-2xl font-bold text-white">4.9★</div>
-            <div>User Rating</div>
+          <div className="text-center glass-card-enhanced p-6 hover:scale-105 transition-transform">
+            <div className="text-4xl font-bold bg-gradient-button bg-clip-text text-transparent mb-2">4.9★</div>
+            <div className="text-white/80 text-sm">User Rating</div>
           </div>
         </div>
       </div>

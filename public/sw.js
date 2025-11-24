@@ -1,12 +1,17 @@
-const CACHE_NAME = 'lucy-ai-v2';
+const CACHE_NAME = 'lucy-ai-v3';
 const urlsToCache = [
   '/',
   '/chat',
   '/auth',
-  '/rooms',
+  '/pricing',
+  '/features',
+  '/launch',
+  '/tools',
   '/offline.html',
   '/favicon.png',
-  '/lucy-logo.png'
+  '/icon-512.png',
+  '/lucy-logo.png',
+  '/og-default.png'
 ];
 
 self.addEventListener('install', event => {
