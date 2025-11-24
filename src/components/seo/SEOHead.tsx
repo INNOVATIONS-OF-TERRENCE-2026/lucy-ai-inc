@@ -11,11 +11,11 @@ interface SEOHeadProps {
 }
 
 export const SEOHead = ({
-  title = 'Lucy AI - Beyond Intelligence',
-  description = 'Your advanced AI assistant powered by cutting-edge technology. Reason, create, and solve with Lucy.',
-  keywords = 'AI assistant, artificial intelligence, chat AI, Lucy AI, conversational AI, smart assistant',
-  image = '/lucy-og-image.png',
-  url = 'https://lucy-ai.app',
+  title = 'Lucy AI - Your Intelligent AI Companion',
+  description = 'Experience next-generation AI with Lucy - featuring advanced reasoning, vision, memory, and creativity. Join 10,000+ users on LucyLounge.org',
+  keywords = 'AI assistant, artificial intelligence, chat AI, Lucy AI, conversational AI, smart assistant, AI companion, multimodal AI',
+  image = '/og-default.png',
+  url = 'https://lucylounge.org',
   type = 'website',
   canonical
 }: SEOHeadProps) => {

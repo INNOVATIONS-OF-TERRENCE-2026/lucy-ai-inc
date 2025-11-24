@@ -12,10 +12,12 @@ const Pricing = () => {
   return (
     <>
       <SEOHead 
-        title="Pricing - Lucy AI | Simple, Transparent Plans"
-        description="Choose the perfect Lucy AI plan for your needs. Free forever plan available. Pro and Team plans with advanced features, unlimited usage, and priority support."
-        keywords="Lucy AI pricing, AI assistant plans, free AI chat, pro AI features, team collaboration"
-        canonical="https://lucy-ai.app/pricing"
+        title="Pricing - Lucy AI | Choose Your Plan"
+        description="Flexible pricing plans for Lucy AI. Start free or upgrade to Pro for unlimited access to advanced AI features, memory, and tools."
+        keywords="AI pricing, Lucy AI plans, AI subscription, AI assistant pricing"
+        image="/og-pricing.png"
+        url="https://lucylounge.org/pricing"
+        canonical="https://lucylounge.org/pricing"
       />
       
       <div className="min-h-screen bg-gradient-primary relative overflow-hidden">

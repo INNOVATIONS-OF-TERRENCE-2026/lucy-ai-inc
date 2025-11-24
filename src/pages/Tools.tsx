@@ -93,9 +93,11 @@ const Tools = () => {
     <>
       <SEOHead 
         title="Lucy Tools - Internal AI Tools Marketplace"
-        description="Access Lucy AI's powerful internal tools: PDF extractor, website summarizer, image captioning, code execution, and more. All tools run securely without external APIs."
-        keywords="Lucy AI tools, AI tools marketplace, PDF extractor, website summarizer, code executor, data analyzer"
-        canonical="https://lucy-ai.app/tools"
+        description="Discover Lucy AI's built-in tools: PDF extraction, web scraping, image analysis, data processing, and more - all powered by Lovable Cloud."
+        keywords="AI tools, PDF extractor, web scraper, image analysis, data tools"
+        image="/og-tools.png"
+        url="https://lucylounge.org/tools"
+        canonical="https://lucylounge.org/tools"
       />
       
       <div className="min-h-screen bg-gradient-primary relative overflow-hidden">

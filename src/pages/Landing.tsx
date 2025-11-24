@@ -23,10 +23,12 @@ const Landing = () => {
   return (
     <>
       <SEOHead 
-        title="Lucy AI - Beyond Intelligence | Advanced AI Assistant"
-        description="Experience the future of AI with Lucy - featuring advanced reasoning, vision, memory, code execution, and real-time web search. Try free today!"
-        keywords="AI assistant, artificial intelligence, chat AI, Lucy AI, GPT-5, Gemini, multimodal AI, code execution, image generation"
-        canonical="https://lucy-ai.app"
+        title="Lucy AI - Your Intelligent AI Companion | LucyLounge.org"
+        description="Experience next-generation AI with Lucy - featuring advanced reasoning, multimodal vision, persistent memory, and creative tools. Join 10,000+ users today!"
+        keywords="AI assistant, artificial intelligence, chat AI, Lucy AI, AI companion, multimodal AI, conversational AI, smart assistant"
+        image="/og-default.png"
+        url="https://lucylounge.org"
+        canonical="https://lucylounge.org"
       />
       
       <div className="min-h-screen bg-gradient-primary relative overflow-hidden">

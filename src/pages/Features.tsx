@@ -56,9 +56,11 @@ const Features = () => {
     <>
       <SEOHead 
         title="Features - Lucy AI | Advanced AI Capabilities"
-        description="Explore Lucy AI's powerful features: advanced reasoning, vision, memory, code execution, web search, and more. Experience the future of AI conversation."
-        keywords="Lucy AI features, AI capabilities, multimodal AI, code execution, image generation, voice AI, AI memory"
-        canonical="https://lucy-ai.app/features"
+        description="Explore Lucy AI's powerful features: advanced reasoning, multimodal vision, persistent memory, code execution, image generation, and more."
+        keywords="AI features, Lucy AI capabilities, multimodal AI, AI vision, AI memory"
+        image="/og-features.png"
+        url="https://lucylounge.org/features"
+        canonical="https://lucylounge.org/features"
       />
       
       <div className="min-h-screen bg-gradient-primary relative overflow-hidden">
