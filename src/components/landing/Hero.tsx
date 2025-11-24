@@ -40,7 +40,7 @@ export const Hero = () => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
           <Button
             size="lg"
-            className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6 h-auto"
+            className="bg-white text-primary hover:bg-white/95 font-semibold text-lg px-8 py-6 h-auto shadow-lg hover:shadow-xl transition-all"
             onClick={() => navigate('/auth')}
           >
             <MessageSquare className="w-5 h-5 mr-2" />
@@ -48,8 +48,7 @@ export const Hero = () => {
           </Button>
           <Button
             size="lg"
-            variant="outline"
-            className="border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-6 h-auto"
+            className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-lg px-8 py-6 h-auto shadow-lg hover:shadow-xl transition-all"
             onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
           >
             <Sparkles className="w-5 h-5 mr-2" />
