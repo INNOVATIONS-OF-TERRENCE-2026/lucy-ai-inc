@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import { useCalmMode } from '@/hooks/useCalmMode';
 
 interface ParallaxLayerProps {
   intensity: number;
@@ -8,17 +7,9 @@ interface ParallaxLayerProps {
 }
 
 export const ParallaxLayer = ({ intensity, activityLevel, children }: ParallaxLayerProps) => {
-  const { calmMode } = useCalmMode();
   const layerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (calmMode) {
-      if (layerRef.current) {
-        layerRef.current.style.transform = 'translate(0px, 0px) scale(1.1)';
-      }
-      return;
-    }
-
     const handleMouseMove = (e: MouseEvent) => {
       if (!layerRef.current) return;
 
@@ -36,11 +27,11 @@ export const ParallaxLayer = ({ intensity, activityLevel, children }: ParallaxLa
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [intensity, calmMode]);
+  }, [intensity]);
 
   // Activity-based animation
   useEffect(() => {
-    if (!layerRef.current || calmMode) return;
+    if (!layerRef.current) return;
 
     const activityIntensity = {
       idle: 0,
@@ -53,7 +44,7 @@ export const ParallaxLayer = ({ intensity, activityLevel, children }: ParallaxLa
       const startTime = Date.now();
       const animate = () => {
         const elapsed = Date.now() - startTime;
-        const pulse = Math.sin(elapsed * 0.003) * activityIntensity * (calmMode ? 0.2 : 1);
+        const pulse = Math.sin(elapsed * 0.003) * activityIntensity;
         
         if (layerRef.current) {
           const currentTransform = layerRef.current.style.transform || 'translate(0px, 0px) scale(1.1)';
@@ -67,7 +58,7 @@ export const ParallaxLayer = ({ intensity, activityLevel, children }: ParallaxLa
       const animationFrame = requestAnimationFrame(animate);
       return () => cancelAnimationFrame(animationFrame);
     }
-  }, [activityLevel, calmMode]);
+  }, [activityLevel]);
 
   return (
     <div

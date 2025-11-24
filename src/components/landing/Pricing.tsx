@@ -1,9 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Check } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { ScrollReveal } from '@/components/effects/ScrollReveal';
-import { HolographicCard } from '@/components/ui/HolographicCard';
-import { RippleButton } from '@/components/ui/RippleButton';
 
 const plans = [
   {
@@ -77,47 +74,45 @@ export const Pricing = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {plans.map((plan, index) => (
-            <ScrollReveal key={index} delay={index * 100}>
-              <HolographicCard
-                className={`p-8 h-full flex flex-col ${
-                  plan.popular ? 'ring-2 ring-accent' : ''
-                }`}
-                glowColor={plan.popular ? 'accent' : 'primary'}
-              >
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-white px-4 py-1 rounded-full text-sm font-semibold">
-                    Most Popular
-                  </div>
-                )}
-                
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                  <div className="flex items-baseline justify-center gap-1 mb-2">
-                    <span className="text-4xl font-bold text-white">{plan.price}</span>
-                    <span className="text-white/70">/{plan.period}</span>
-                  </div>
-                  <p className="text-white/80 text-sm">{plan.description}</p>
+            <div 
+              key={index}
+              className={`glass-card-enhanced p-8 hover:scale-105 transition-all duration-300 relative ${
+                plan.popular ? 'ring-2 ring-accent shadow-glow-accent' : ''
+              }`}
+            >
+              {plan.popular && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-accent-foreground px-4 py-1 rounded-full text-sm font-semibold">
+                  Most Popular
                 </div>
+              )}
+              
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
+                <div className="flex items-baseline justify-center gap-1 mb-2">
+                  <span className="text-4xl font-bold text-white">{plan.price}</span>
+                  <span className="text-white/70">/{plan.period}</span>
+                </div>
+                <p className="text-white/80 text-sm">{plan.description}</p>
+              </div>
 
-                <ul className="space-y-3 mb-8 flex-1">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                      <span className="text-white/90 text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+              <ul className="space-y-3 mb-8">
+                {plan.features.map((feature, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                    <span className="text-white/90 text-sm">{feature}</span>
+                  </li>
+                ))}
+              </ul>
 
-                <RippleButton 
-                  className="w-full" 
-                  variant={plan.popular ? "gradient" : "outline"}
-                  size="lg"
-                  onClick={() => navigate('/auth')}
-                >
-                  {plan.cta}
-                </RippleButton>
-              </HolographicCard>
-            </ScrollReveal>
+              <Button 
+                className="w-full" 
+                variant={plan.popular ? "gradient" : "outline"}
+                size="lg"
+                onClick={() => navigate('/auth')}
+              >
+                {plan.cta}
+              </Button>
+            </div>
           ))}
         </div>
       </div>

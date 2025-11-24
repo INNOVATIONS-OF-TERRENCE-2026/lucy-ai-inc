@@ -235,38 +235,6 @@ All colors MUST be HSL.
     }
   }
 
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0) translateX(0);
-    }
-    25% {
-      transform: translateY(-10px) translateX(5px);
-    }
-    50% {
-      transform: translateY(-5px) translateX(-5px);
-    }
-    75% {
-      transform: translateY(-15px) translateX(3px);
-    }
-  }
-
-  @keyframes float-calm {
-    0%, 100% {
-      transform: translateY(0) translateX(0);
-    }
-    50% {
-      transform: translateY(-3px) translateX(0);
-    }
-  }
-
-  @keyframes ripple {
-    to {
-      width: 400px;
-      height: 400px;
-      opacity: 0;
-    }
-  }
-
   .animate-pulse-glow {
     animation: pulse-glow 2s ease-in-out infinite;
   }
@@ -278,23 +246,6 @@ All colors MUST be HSL.
 
   .animate-neural-pulse {
     animation: neural-pulse 2s ease-in-out infinite;
-  }
-
-  .animate-ripple {
-    animation: ripple 0.6s ease-out;
-  }
-
-  .animate-float-calm {
-    animation: float-calm 6s ease-in-out infinite;
-  }
-
-  /* Calm mode utilities */
-  .calm-transition {
-    transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .calm-glow {
-    box-shadow: 0 0 15px rgba(123, 63, 242, 0.2);
   }
 
   /* Glass morphism utility */

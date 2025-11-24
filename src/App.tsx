@@ -4,7 +4,6 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HelmetProvider } from "react-helmet-async";
 import Landing from "./pages/Landing";
 import Pricing from "./pages/Pricing";
 import Features from "./pages/Features";
@@ -24,10 +23,6 @@ import { IntroScreen } from "./components/branding/IntroScreen";
 import { AnalyticsTracker } from "./components/analytics/AnalyticsTracker";
 import { InstallPrompt } from "./components/pwa/InstallPrompt";
 import { OfflineBanner } from "./components/pwa/OfflineBanner";
-import { WakeScreen } from "./components/pwa/WakeScreen";
-import { ParallaxEnvironment } from "./components/effects/ParallaxEnvironment";
-import { DailyGreeting } from "./components/daily/DailyGreeting";
-import { PerformanceMonitor } from "./components/debug/PerformanceMonitor";
 
 const queryClient = new QueryClient();
 
@@ -52,20 +47,15 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <HelmetProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <ParallaxEnvironment mode="cosmic" intensity={0.5} />
-          <PerformanceMonitor />
-          {showIntro && <IntroScreen onComplete={handleIntroComplete} />}
-          <DailyGreeting />
-          <WakeScreen />
-          <InstallPrompt />
-          <OfflineBanner />
-          <div className={hasShownIntro ? 'animate-fade-in' : ''}>
-            <BrowserRouter>
-              <AnalyticsTracker />
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        {showIntro && <IntroScreen onComplete={handleIntroComplete} />}
+        <InstallPrompt />
+        <OfflineBanner />
+        <div className={hasShownIntro ? 'animate-fade-in' : ''}>
+          <BrowserRouter>
+            <AnalyticsTracker />
             <Routes>
               <Route path="/" element={<Landing />} />
               <Route path="/pricing" element={<Pricing />} />
@@ -87,7 +77,6 @@ const App = () => {
           </BrowserRouter>
         </div>
       </TooltipProvider>
-      </HelmetProvider>
     </QueryClientProvider>
   );
 };

@@ -7,7 +7,6 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { CalmModeToggle } from "@/components/settings/CalmModeToggle";
 
 interface SettingsModalProps {
   open: boolean;
@@ -109,8 +108,6 @@ export function SettingsModal({ open, onOpenChange }: SettingsModalProps) {
         </DialogHeader>
 
         <div className="space-y-6">
-          <CalmModeToggle />
-          
           <div className="space-y-3">
             <Label>Personality Preset</Label>
             <Select

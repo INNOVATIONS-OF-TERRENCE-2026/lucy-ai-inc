@@ -4,11 +4,7 @@ import { Footer } from '@/components/landing/Footer';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Check } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { AdvancedLucyAvatar } from '@/components/avatar/AdvancedLucyAvatar';
-import { ParallaxEnvironment } from '@/components/effects/ParallaxEnvironment';
-import { HolographicCard } from '@/components/ui/HolographicCard';
-import { RippleButton } from '@/components/ui/RippleButton';
-import { ScrollReveal } from '@/components/effects/ScrollReveal';
+import { LucyAvatar } from '@/components/avatar/LucyAvatar';
 
 const Features = () => {
   const navigate = useNavigate();
@@ -59,32 +55,38 @@ const Features = () => {
   return (
     <>
       <SEOHead 
-        title="Lucy AI Features — Advanced AI Capabilities"
-        description="Discover all of Lucy AI's powerful features: advanced reasoning, vision & multimodal, real-time streaming, long-term memory, code execution, web search, and more."
-        keywords="Lucy AI features, AI capabilities, multimodal AI, code execution, web search, image generation"
-        canonical="https://lucylounge.org/features"
-        image="/og-features.png"
-        url="https://lucylounge.org/features"
+        title="Features - Lucy AI | Advanced AI Capabilities"
+        description="Explore Lucy AI's powerful features: advanced reasoning, vision, memory, code execution, web search, and more. Experience the future of AI conversation."
+        keywords="Lucy AI features, AI capabilities, multimodal AI, code execution, image generation, voice AI, AI memory"
+        canonical="https://lucy-ai.app/features"
       />
       
-      <ParallaxEnvironment mode="neon" intensity={0.5}>
-        <div className="min-h-screen relative">
+      <div className="min-h-screen bg-gradient-primary relative overflow-hidden">
+        {/* Background effects */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse-glow" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '1s' }} />
+        </div>
+
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/30 pointer-events-none" />
+
+        <div className="relative z-10">
           {/* Header */}
           <div className="container mx-auto px-4 py-8">
-            <RippleButton
+            <Button
               variant="ghost"
               className="text-white hover:bg-white/10"
               onClick={() => navigate('/')}
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Home
-            </RippleButton>
+            </Button>
           </div>
 
           {/* Hero Section */}
           <div className="container mx-auto px-4 py-12 text-center">
             <div className="flex justify-center mb-6">
-              <AdvancedLucyAvatar size="xl" state="excited" />
+              <LucyAvatar size="lg" state="focused" />
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 text-shadow-strong">
               Powerful AI Features
@@ -104,43 +106,42 @@ const Features = () => {
                 Complete Feature List
               </h2>
 
-              <div className="space-y-8">
+              <div className="space-y-12">
                 {detailedFeatures.map((category, index) => (
-                  <ScrollReveal key={index} delay={index * 100}>
-                    <HolographicCard className="p-8">
-                      <h3 className="text-2xl font-bold text-white mb-6">{category.category}</h3>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {category.items.map((item, i) => (
-                          <div key={i} className="flex items-start gap-3">
-                            <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
-                            <div>
-                              <div className="font-semibold text-white">{item.name}</div>
-                              <div className="text-sm text-white/70">{item.description}</div>
-                            </div>
+                  <div key={index} className="glass-card-enhanced p-8">
+                    <h3 className="text-2xl font-bold text-white mb-6">{category.category}</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {category.items.map((item, i) => (
+                        <div key={i} className="flex items-start gap-3">
+                          <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
+                          <div>
+                            <div className="font-semibold text-white">{item.name}</div>
+                            <div className="text-sm text-white/70">{item.description}</div>
                           </div>
-                        ))}
-                      </div>
-                    </HolographicCard>
-                  </ScrollReveal>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
 
               {/* CTA */}
               <div className="text-center mt-12">
-                <RippleButton
+                <Button
                   size="lg"
-                  variant="gradient"
+                  className="bg-white text-primary hover:bg-white/95 font-semibold text-lg px-8 py-6"
                   onClick={() => navigate('/auth')}
                 >
                   Try Lucy AI Free
-                </RippleButton>
+                </Button>
               </div>
             </div>
           </div>
 
+          {/* Footer */}
           <Footer />
         </div>
-      </ParallaxEnvironment>
+      </div>
     </>
   );
 };

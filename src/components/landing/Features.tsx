@@ -1,6 +1,4 @@
 import { Brain, Eye, Zap, Shield, MessageSquare, Sparkles, Image, Code, Globe, Database } from 'lucide-react';
-import { HolographicCard } from '@/components/ui/HolographicCard';
-import { ScrollReveal } from '@/components/effects/ScrollReveal';
 
 const features = [
   {
@@ -74,25 +72,26 @@ export const Features = () => {
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <ScrollReveal key={index} delay={index * 50}>
-                <HolographicCard className="p-6 h-full">
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0">
-                      <div className="w-12 h-12 rounded-[12px] bg-gradient-button flex items-center justify-center shadow-lg">
-                        <Icon className="w-6 h-6 text-white" />
-                      </div>
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">
-                        {feature.title}
-                      </h3>
-                      <p className="text-white/80 text-sm leading-relaxed">
-                        {feature.description}
-                      </p>
+              <div 
+                key={index}
+                className="glass-card-enhanced p-6 hover:scale-105 transition-transform duration-300"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-primary flex items-center justify-center">
+                      <Icon className="w-6 h-6 text-white" />
                     </div>
                   </div>
-                </HolographicCard>
-              </ScrollReveal>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white mb-2">
+                      {feature.title}
+                    </h3>
+                    <p className="text-white/80 text-sm">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
             );
           })}
         </div>
