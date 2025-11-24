@@ -17,7 +17,7 @@ export const Footer = () => {
               <span className="text-2xl font-bold text-white">Lucy AI</span>
             </div>
             <p className="text-white/70 mb-4 max-w-md">
-              Beyond Intelligence. Your advanced AI assistant for reasoning, creativity, and problem-solving.
+              Beyond Intelligence. An advanced AI assistant system designed and architected by Software Engineer Terrence Milliner Sr., powered by state-of-the-art AI models.
             </p>
             <div className="flex gap-4">
               <a href="https://twitter.com/lucyai" className="text-white/70 hover:text-white transition-colors">
@@ -63,7 +63,7 @@ export const Footer = () => {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-white/60 text-sm">
-            © {currentYear} Lucy AI. All rights reserved.
+            © {currentYear} Lucy AI. Designed and architected by Software Engineer Terrence Milliner Sr. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
             <a href="#" className="text-white/60 hover:text-white transition-colors">Privacy Policy</a>

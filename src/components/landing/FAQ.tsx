@@ -3,7 +3,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 const faqs = [
   {
     question: 'What makes Lucy AI different from other AI assistants?',
-    answer: 'Lucy AI combines advanced reasoning with multimodal capabilities, long-term memory, and real-world knowledge integration. We offer transparent chain-of-thought reasoning, web search, code execution, and image generation all in one platform.'
+    answer: 'Lucy AI is a next-generation assistant system designed and architected by Software Engineer Terrence Milliner Sr. It combines advanced reasoning with multimodal capabilities, long-term memory, and real-world knowledge integration. We orchestrate multiple state-of-the-art AI models from leading providers to give you the best experience for each task.'
   },
   {
     question: 'Is my data secure and private?',
@@ -14,8 +14,8 @@ const faqs = [
     answer: 'Absolutely! Lucy AI works on all devices and can be installed as a Progressive Web App (PWA) on your phone for a native app experience with offline capabilities.'
   },
   {
-    question: 'What AI models does Lucy use?',
-    answer: 'Lucy uses a combination of cutting-edge models including GPT-5, Gemini Pro, and specialized models for vision, code execution, and image generation. We automatically select the best model for each task.'
+    question: 'What powers Lucy AI?',
+    answer: 'Lucy AI is designed and architected by Software Engineer Terrence Milliner Sr. The system orchestrates multiple advanced AI models from leading providers (including models from OpenAI, Google, and others) to deliver the best results for each type of task. The exact model selection adapts intelligently based on your needs.'
   },
   {
     question: 'Can I share my conversations?',

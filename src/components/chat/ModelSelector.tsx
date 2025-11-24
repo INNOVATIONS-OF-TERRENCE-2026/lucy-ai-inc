@@ -11,19 +11,19 @@ interface ModelSelectorProps {
 }
 
 const models = [
-  { value: 'auto', label: 'Auto-Select (Smart Routing)', description: 'Let Lucy choose the best model' },
-  { value: 'google/gemini-2.5-flash', label: 'Gemini 2.5 Flash', description: 'Balanced & fast' },
-  { value: 'google/gemini-2.5-pro', label: 'Gemini 2.5 Pro', description: 'Deep reasoning' },
-  { value: 'google/gemini-2.5-flash-lite', label: 'Gemini Flash Lite', description: 'Quick responses' },
-  { value: 'openai/gpt-5-mini', label: 'GPT-5 Mini', description: 'Creative & versatile' },
-  { value: 'openai/gpt-5', label: 'GPT-5', description: 'Maximum intelligence' },
+  { value: 'auto', label: 'Lucy Core Engine (Auto)', description: 'Adaptive intelligence routing' },
+  { value: 'google/gemini-2.5-flash', label: 'Lucy Balanced', description: 'Fast & versatile' },
+  { value: 'google/gemini-2.5-pro', label: 'Lucy Advanced', description: 'Deep reasoning' },
+  { value: 'google/gemini-2.5-flash-lite', label: 'Lucy Quick', description: 'Rapid responses' },
+  { value: 'openai/gpt-5-mini', label: 'Lucy Creative', description: 'Creative & versatile' },
+  { value: 'openai/gpt-5', label: 'Lucy Maximum', description: 'Peak intelligence' },
 ];
 
 export function ModelSelector({ selectedModel, onModelChange, fusionEnabled, onFusionToggle }: ModelSelectorProps) {
   return (
     <div className="space-y-4 p-4 border-t border-border">
       <div className="space-y-2">
-        <Label className="text-sm font-medium">AI Model</Label>
+        <Label className="text-sm font-medium">Intelligence Mode</Label>
         <Select
           value={selectedModel || 'auto'}
           onValueChange={(value) => onModelChange(value === 'auto' ? null : value)}
@@ -42,6 +42,9 @@ export function ModelSelector({ selectedModel, onModelChange, fusionEnabled, onF
             ))}
           </SelectContent>
         </Select>
+        <p className="text-xs text-muted-foreground">
+          Lucy AI orchestrates multiple state-of-the-art models from leading providers
+        </p>
       </div>
 
       <div className="flex items-center justify-between">

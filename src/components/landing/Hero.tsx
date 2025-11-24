@@ -46,7 +46,7 @@ export const Hero = () => {
         </h1>
         
         <p className="text-xl md:text-2xl text-white/95 mb-14 max-w-3xl mx-auto text-shadow-soft leading-relaxed">
-          Experience next-generation AI with advanced reasoning, multimodal vision, persistent memory, and creative tools—all powered by cutting-edge technology
+          A next-generation AI assistant system designed and architected by Software Engineer Terrence Milliner Sr., powered by state-of-the-art AI models for advanced reasoning, vision, memory, and creativity
         </p>
 
         {/* CTA Buttons */}
