@@ -18,18 +18,22 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 260 60% 10%;
 
-    /* Primary: Deep Violet */
-    --primary: 265 70% 55%;
+    /* Primary: Electric Violet */
+    --primary: 265 70% 58%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 265 70% 50%;
+    --primary-hover: 265 75% 63%;
 
-    /* Secondary: Electric Blue */
-    --secondary: 220 90% 60%;
-    --secondary-foreground: 0 0% 100%;
+    /* Secondary: Soft Lavender */
+    --secondary: 270 60% 80%;
+    --secondary-foreground: 265 70% 25%;
 
-    /* Accent: Bright Cyan */
-    --accent: 190 95% 65%;
-    --accent-foreground: 260 60% 10%;
+    /* Accent: Neon Blue */
+    --accent: 200 90% 55%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Danger: Rose Magenta */
+    --destructive: 340 85% 60%;
+    --destructive-foreground: 0 0% 100%;
 
     --muted: 220 15% 95%;
     --muted-foreground: 260 20% 45%;
@@ -43,10 +47,11 @@ All colors MUST be HSL.
 
     --radius: 0.75rem;
 
-    /* Gradient definitions */
-    --gradient-primary: linear-gradient(135deg, hsl(265 70% 55%) 0%, hsl(220 90% 60%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(265 70% 98%) 0%, hsl(220 90% 98%) 100%);
-    --gradient-glow: linear-gradient(135deg, hsl(265 70% 55% / 0.1) 0%, hsl(220 90% 60% / 0.1) 100%);
+    /* Gradient definitions - Electric Violet to Neon Blue */
+    --gradient-primary: linear-gradient(135deg, hsl(265 70% 58%) 0%, hsl(200 90% 55%) 100%);
+    --gradient-button: linear-gradient(135deg, #7B3FF2 0%, #20A4F3 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(265 70% 98%) 0%, hsl(200 90% 98%) 100%);
+    --gradient-glow: linear-gradient(135deg, hsl(265 70% 58% / 0.1) 0%, hsl(200 90% 55% / 0.1) 100%);
 
     /* Neural glow effects */
     --glow-violet: 0 0 40px hsl(265 70% 55% / 0.3);
@@ -81,16 +86,20 @@ All colors MUST be HSL.
 
     /* Primary: Brighter Violet for dark mode */
     --primary: 265 80% 65%;
-    --primary-foreground: 260 40% 8%;
-    --primary-hover: 265 80% 70%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 265 85% 70%;
 
-    /* Secondary: Vivid Blue */
-    --secondary: 220 100% 70%;
-    --secondary-foreground: 260 40% 8%;
+    /* Secondary: Soft Lavender */
+    --secondary: 270 50% 75%;
+    --secondary-foreground: 260 40% 15%;
 
-    /* Accent: Neon Cyan */
-    --accent: 190 100% 70%;
-    --accent-foreground: 260 40% 8%;
+    /* Accent: Neon Blue */
+    --accent: 200 95% 60%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Danger: Rose Magenta */
+    --destructive: 340 90% 65%;
+    --destructive-foreground: 0 0% 100%;
 
     --muted: 260 30% 18%;
     --muted-foreground: 0 0% 70%;
@@ -103,9 +112,10 @@ All colors MUST be HSL.
     --ring: 265 80% 65%;
 
     /* Dark mode gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(265 80% 65%) 0%, hsl(220 100% 70%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(265 40% 15%) 0%, hsl(220 40% 15%) 100%);
-    --gradient-glow: linear-gradient(135deg, hsl(265 80% 65% / 0.2) 0%, hsl(220 100% 70% / 0.2) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(265 80% 65%) 0%, hsl(200 95% 60%) 100%);
+    --gradient-button: linear-gradient(135deg, #8B5CF6 0%, #38BDF8 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(265 40% 15%) 0%, hsl(200 40% 15%) 100%);
+    --gradient-glow: linear-gradient(135deg, hsl(265 80% 65% / 0.2) 0%, hsl(200 95% 60% / 0.2) 100%);
 
     /* Enhanced glow for dark mode */
     --glow-violet: 0 0 60px hsl(265 80% 65% / 0.5);
