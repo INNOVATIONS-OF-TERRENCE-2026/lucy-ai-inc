@@ -4,7 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
+import Landing from "./pages/Landing";
 import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
 import Chat from "./pages/Chat";
@@ -14,6 +14,8 @@ import { RoomList } from "./components/rooms/RoomList";
 import { RoomChat } from "./components/rooms/RoomChat";
 import { AnalyticsDashboard } from "./components/analytics/AnalyticsDashboard";
 import { IntroScreen } from "./components/branding/IntroScreen";
+import { AnalyticsTracker } from "./components/analytics/AnalyticsTracker";
+import { InstallPrompt } from "./components/pwa/InstallPrompt";
 
 const queryClient = new QueryClient();
 
@@ -42,10 +44,12 @@ const App = () => {
         <Toaster />
         <Sonner />
         {showIntro && <IntroScreen onComplete={handleIntroComplete} />}
+        <InstallPrompt />
         <div className={hasShownIntro ? 'animate-fade-in' : ''}>
           <BrowserRouter>
+            <AnalyticsTracker />
             <Routes>
-              <Route path="/" element={<Index />} />
+              <Route path="/" element={<Landing />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/chat" element={<Chat />} />
               <Route path="/admin" element={<Admin />} />

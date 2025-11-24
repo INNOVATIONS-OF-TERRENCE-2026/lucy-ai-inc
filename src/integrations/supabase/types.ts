@@ -371,6 +371,42 @@ export type Database = {
           },
         ]
       }
+      page_analytics: {
+        Row: {
+          browser: string | null
+          country: string | null
+          created_at: string | null
+          device_type: string | null
+          id: string
+          page_path: string
+          referrer: string | null
+          session_id: string | null
+          user_agent: string | null
+        }
+        Insert: {
+          browser?: string | null
+          country?: string | null
+          created_at?: string | null
+          device_type?: string | null
+          id?: string
+          page_path: string
+          referrer?: string | null
+          session_id?: string | null
+          user_agent?: string | null
+        }
+        Update: {
+          browser?: string | null
+          country?: string | null
+          created_at?: string | null
+          device_type?: string | null
+          id?: string
+          page_path?: string
+          referrer?: string | null
+          session_id?: string | null
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
       performance_metrics: {
         Row: {
           device_info: Json
@@ -450,6 +486,9 @@ export type Database = {
           id: string
           name: string | null
           preferences: Json | null
+          pro_trial_until: string | null
+          referral_code: string | null
+          referred_by: string | null
           updated_at: string
         }
         Insert: {
@@ -459,6 +498,9 @@ export type Database = {
           id: string
           name?: string | null
           preferences?: Json | null
+          pro_trial_until?: string | null
+          referral_code?: string | null
+          referred_by?: string | null
           updated_at?: string
         }
         Update: {
@@ -468,7 +510,51 @@ export type Database = {
           id?: string
           name?: string | null
           preferences?: Json | null
+          pro_trial_until?: string | null
+          referral_code?: string | null
+          referred_by?: string | null
           updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_referred_by_fkey"
+            columns: ["referred_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      referrals: {
+        Row: {
+          converted_at: string | null
+          created_at: string | null
+          id: string
+          referral_code: string
+          referred_user_id: string | null
+          referrer_user_id: string
+          reward_granted: boolean | null
+          status: string | null
+        }
+        Insert: {
+          converted_at?: string | null
+          created_at?: string | null
+          id?: string
+          referral_code: string
+          referred_user_id?: string | null
+          referrer_user_id: string
+          reward_granted?: boolean | null
+          status?: string | null
+        }
+        Update: {
+          converted_at?: string | null
+          created_at?: string | null
+          id?: string
+          referral_code?: string
+          referred_user_id?: string | null
+          referrer_user_id?: string
+          reward_granted?: boolean | null
+          status?: string | null
         }
         Relationships: []
       }

@@ -1,23 +1,54 @@
 {
-  "name": "Lucy AI",
-  "short_name": "Lucy",
-  "description": "Advanced AI assistant with voice, video, and multi-user capabilities",
+  "name": "Lucy AI - Beyond Intelligence",
+  "short_name": "Lucy AI",
+  "description": "Your advanced AI assistant with reasoning, vision, memory, and creativity",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
+  "background_color": "#1a0f2e",
   "theme_color": "#8b5cf6",
   "orientation": "portrait-primary",
+  "categories": ["productivity", "utilities", "education"],
+  "screenshots": [
+    {
+      "src": "/lucy-og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png"
+    }
+  ],
   "icons": [
     {
-      "src": "/favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "/placeholder.svg",
-      "type": "image/svg+xml",
-      "sizes": "any",
-      "purpose": "any maskable"
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
-  ]
+  ],
+  "shortcuts": [
+    {
+      "name": "New Chat",
+      "url": "/chat",
+      "description": "Start a new conversation with Lucy"
+    },
+    {
+      "name": "Rooms",
+      "url": "/rooms",
+      "description": "Join a collaborative chat room"
+    }
+  ],
+  "share_target": {
+    "action": "/chat",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  }
 }
