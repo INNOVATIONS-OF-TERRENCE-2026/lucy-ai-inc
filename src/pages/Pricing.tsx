@@ -13,9 +13,9 @@ const Pricing = () => {
   return (
     <>
       <SEOHead 
-        title="Pricing - Lucy AI | Choose Your Plan"
-        description="Flexible pricing plans for Lucy AI. Start free or upgrade to Pro for unlimited access to advanced AI features, memory, and tools."
-        keywords="AI pricing, Lucy AI plans, AI subscription, AI assistant pricing"
+        title="Pricing - Lucy AI | Affordable AI Plans for Everyone"
+        description="Flexible AI pricing plans for Lucy AI. Start free or upgrade to Pro for unlimited access. Best value AI assistant 2025. No credit card required to start."
+        keywords="AI pricing, Lucy AI plans, AI subscription, affordable AI, AI assistant pricing, free AI chat, AI pro plans"
         image="/og-pricing.png"
         url="https://lucylounge.org/pricing"
         canonical="https://lucylounge.org/pricing"

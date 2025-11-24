@@ -15,9 +15,10 @@ const About = () => {
   return (
     <>
       <SEOHead 
-        title="About Lucy AI - Engineered by Terrence Milliner Sr."
-        description="Lucy AI is a next-generation digital companion engineered and architected by Software Engineer & AI Innovator Terrence Milliner Sr. Learn about the system, the vision, and the creator behind Lucy."
-        keywords="Lucy AI, Terrence Milliner, AI architect, software engineer, about Lucy, Lucy creator"
+        title="About Lucy AI | Meet Your Intelligent AI Companion"
+        description="Learn about Lucy AI - an advanced AI assistant system designed by Software Engineer Terrence Milliner Sr. Discover the story, vision, and technology behind Lucy."
+        keywords="about Lucy AI, AI creator, Terrence Milliner Sr, AI engineer, AI development, AI story, AI technology"
+        image="/og-default.png"
         url="https://lucylounge.org/about"
         canonical="https://lucylounge.org/about"
       />

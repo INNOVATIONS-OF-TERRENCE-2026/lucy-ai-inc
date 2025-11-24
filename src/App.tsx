@@ -12,6 +12,8 @@ import Launch from "./pages/Launch";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Tools from "./pages/Tools";
+import Analytics from "./pages/Analytics";
+import CreatorStudio from "./pages/CreatorStudio";
 import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
 import Chat from "./pages/Chat";
@@ -66,6 +68,7 @@ const App = () => {
               <Route path="/features" element={<Features />} />
               <Route path="/launch" element={<Launch />} />
               <Route path="/tools" element={<Tools />} />
+              <Route path="/creator-studio" element={<CreatorStudio />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/auth" element={<Auth />} />
@@ -74,7 +77,7 @@ const App = () => {
               <Route path="/shared/:token" element={<SharedConversation />} />
               <Route path="/rooms" element={<RoomList />} />
               <Route path="/room/:roomId" element={<RoomChat />} />
-              <Route path="/analytics" element={<AnalyticsDashboard />} />
+              <Route path="/analytics" element={<Analytics />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

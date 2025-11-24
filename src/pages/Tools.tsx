@@ -93,9 +93,9 @@ const Tools = () => {
   return (
     <>
       <SEOHead 
-        title="Lucy Tools - Internal AI Tools Marketplace"
-        description="Discover Lucy AI's built-in tools: PDF extraction, web scraping, image analysis, data processing, and more - all powered by Lovable Cloud."
-        keywords="AI tools, PDF extractor, web scraper, image analysis, data tools"
+        title="AI Tools - Lucy AI | Free AI-Powered Tools & Utilities"
+        description="Access Lucy AI's suite of free AI tools: PDF reader, image analysis, code execution, web scraper, data analyzer, and more. Powered by advanced AI."
+        keywords="free AI tools, AI utilities, PDF reader AI, image analysis AI, code execution online, web scraper AI, AI toolkit"
         image="/og-tools.png"
         url="https://lucylounge.org/tools"
         canonical="https://lucylounge.org/tools"

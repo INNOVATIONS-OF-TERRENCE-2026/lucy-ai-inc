@@ -56,9 +56,9 @@ const Features = () => {
   return (
     <>
       <SEOHead 
-        title="Features - Lucy AI | Advanced AI Capabilities"
-        description="Explore Lucy AI's powerful features: advanced reasoning, multimodal vision, persistent memory, code execution, image generation, and more."
-        keywords="AI features, Lucy AI capabilities, multimodal AI, AI vision, AI memory"
+        title="Features - Lucy AI | Advanced AI Capabilities & Tools"
+        description="Explore Lucy AI's powerful features: advanced reasoning engine, multimodal vision, code execution, web search, long-term memory, and creative tools. Best AI chat platform 2025."
+        keywords="AI features, multimodal AI, AI vision, AI reasoning, code execution AI, AI memory system, AI web search, best AI tools 2025"
         image="/og-features.png"
         url="https://lucylounge.org/features"
         canonical="https://lucylounge.org/features"

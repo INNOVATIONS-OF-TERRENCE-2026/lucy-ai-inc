@@ -318,6 +318,30 @@ export type Database = {
         }
         Relationships: []
       }
+      email_leads: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          source: string
+          subscribed: boolean
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          source?: string
+          subscribed?: boolean
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          source?: string
+          subscribed?: boolean
+        }
+        Relationships: []
+      }
       folders: {
         Row: {
           color: string | null
