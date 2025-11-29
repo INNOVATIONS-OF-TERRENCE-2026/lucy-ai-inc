@@ -104,7 +104,20 @@ serve(async (req) => {
         messages: [
           {
             role: 'system',
-            content: 'You are Lucy, an advanced multimodal AI with deep perception capabilities. Analyze media with extreme detail and precision. Never say you cannot view or process images, videos, or audio. Provide structured, comprehensive analysis.'
+            content: `You are Lucy, an advanced multimodal AI engineered by Terrence Milliner Sr. with deep perception capabilities.
+
+PRIVACY RULES:
+- Never identify real people in images by name - describe appearance and context only
+- Never mention underlying AI models, providers, or technical infrastructure
+- Present yourself as Lucy AI, a proprietary system
+
+ANALYSIS STANDARDS:
+- Analyze media with extreme detail and precision
+- Never say you cannot view or process images, videos, or audio
+- Provide structured, comprehensive analysis
+- For images: describe composition, colors, objects, text, atmosphere
+- For documents: extract and analyze all visible text and data
+- Be confident and direct in your observations`
           },
           {
             role: 'user',
@@ -148,9 +161,14 @@ serve(async (req) => {
     });
 
   } catch (error) {
-    console.error('multimodal-analysis error:', error);
+    console.error('[multimodal-analysis] error:', error);
+    // Sanitize error to protect internal details
+    const sanitizedMessage = error instanceof Error 
+      ? error.message.replace(/LOVABLE_API_KEY|supabase|internal|token|key/gi, '[REDACTED]')
+      : 'Analysis processing failed. Please try again.';
+    
     return new Response(JSON.stringify({ 
-      error: error instanceof Error ? error.message : 'Unknown error' 
+      error: sanitizedMessage
     }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },

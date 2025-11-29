@@ -81,9 +81,13 @@ serve(async (req) => {
     );
 
   } catch (error) {
-    console.error('Speech-to-text error:', error);
+    console.error('[speech-to-text] error:', error);
+    const sanitizedMessage = error instanceof Error 
+      ? error.message.replace(/LOVABLE_API_KEY|key|token|internal|supabase/gi, '[REDACTED]')
+      : 'Transcription failed. Please try again.';
+    
     return new Response(
-      JSON.stringify({ error: error instanceof Error ? error.message : 'Unknown error' }),
+      JSON.stringify({ error: sanitizedMessage }),
       {
         status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },

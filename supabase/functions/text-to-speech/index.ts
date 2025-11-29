@@ -56,9 +56,13 @@ serve(async (req) => {
       },
     );
   } catch (error) {
-    console.error('Text-to-speech error:', error);
+    console.error('[text-to-speech] error:', error);
+    const sanitizedMessage = error instanceof Error 
+      ? error.message.replace(/LOVABLE_API_KEY|key|token|internal|supabase/gi, '[REDACTED]')
+      : 'Speech generation failed. Please try again.';
+    
     return new Response(
-      JSON.stringify({ error: error instanceof Error ? error.message : 'Unknown error' }),
+      JSON.stringify({ error: sanitizedMessage }),
       {
         status: 400,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
