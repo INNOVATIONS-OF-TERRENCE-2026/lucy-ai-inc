@@ -6,6 +6,12 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+// Privacy sanitizer
+function sanitizeError(error: unknown): string {
+  console.error('[INTERNAL ERROR]', error);
+  return "Image generation unavailable. Please try again or refine your prompt.";
+}
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
@@ -26,9 +32,13 @@ serve(async (req) => {
       throw new Error('LOVABLE_API_KEY is not configured');
     }
 
-    console.log('Generating image with prompt:', prompt);
+    console.log('Generating image with prompt:', prompt.substring(0, 100));
 
-    // Enhanced prompt based on style
+    // Get current date for temporal context
+    const now = new Date();
+    const currentYear = now.getFullYear();
+
+    // Enhanced prompt based on style with modern 2025 aesthetic
     const stylePrompts: Record<string, string> = {
       realistic: "Ultra high resolution, photorealistic, professional photography, 8K detail.",
       artistic: "Artistic interpretation, creative style, vibrant colors, expressive.",
@@ -89,9 +99,9 @@ serve(async (req) => {
     });
 
   } catch (error) {
-    console.error('generate-image error:', error);
+    console.error('[generate-image] Internal error:', error);
     return new Response(JSON.stringify({ 
-      error: error instanceof Error ? error.message : 'Unknown error' 
+      error: sanitizeError(error)
     }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
