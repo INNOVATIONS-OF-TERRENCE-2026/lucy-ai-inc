@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -20,40 +23,40 @@ All colors MUST be HSL.
     --hologram-silver: 250 50% 88%;
     --sacred-gold: 45 70% 76%;
 
-    --background: 240 4% 95%;
-    --foreground: 240 5% 10%;
+    --background: 0 0% 96%;
+    --foreground: 0 0% 9%;
 
     --card: 0 0% 98%;
-    --card-foreground: 240 5% 10%;
+    --card-foreground: 0 0% 9%;
 
-    --popover: 240 5% 90%;
-    --popover-foreground: 240 5% 10%;
+    --popover: 0 0% 89%;
+    --popover-foreground: 0 0% 9%;
 
     /* Primary: Ultra-Violet Nebula */
-    --primary: 258 89% 66%;
-    --primary-foreground: 250 100% 97%;
+    --primary: 20 90% 48%;
+    --primary-foreground: 33 100% 96%;
     --primary-hover: 277 100% 35%;
 
     /* Secondary: Magenta Starfire */
-    --secondary: 240 5% 33%;
+    --secondary: 0 0% 32%;
     --secondary-foreground: 0 0% 98%;
 
     /* Accent: Sacred Gold */
-    --accent: 269 100% 98%;
-    --accent-foreground: 270 91% 65%;
+    --accent: 47 100% 96%;
+    --accent-foreground: 37 92% 50%;
 
     /* Destructive */
     --destructive: 0 72% 50%;
     --destructive-foreground: 0 85% 97%;
 
-    --muted: 240 4% 83%;
-    --muted-foreground: 240 5% 10%;
+    --muted: 0 0% 63%;
+    --muted-foreground: 0 0% 9%;
 
-    --border: 240 4% 83%;
-    --input: 240 4% 83%;
-    --ring: 258 89% 66%;
+    --border: 0 0% 83%;
+    --input: 0 0% 83%;
+    --ring: 20 90% 48%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     /* Cosmic Temple Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(0 0% 0%) 0%, hsl(280 100% 9%) 50%, hsl(277 100% 30%) 100%);
@@ -70,26 +73,26 @@ All colors MUST be HSL.
 
     /* Sidebar colors */
     --sidebar-background: 280 100% 9%;
-    --sidebar-foreground: 240 5% 10%;
-    --sidebar-primary: 258 89% 66%;
-    --sidebar-primary-foreground: 250 100% 97%;
-    --sidebar-accent: 240 5% 33%;
+    --sidebar-foreground: 0 0% 9%;
+    --sidebar-primary: 20 90% 48%;
+    --sidebar-primary-foreground: 33 100% 96%;
+    --sidebar-accent: 0 0% 32%;
     --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 240 4% 83%;
-    --sidebar-ring: 258 89% 66%;
+    --sidebar-border: 0 0% 83%;
+    --sidebar-ring: 20 90% 48%;
 
     /* Animation timings */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-divine: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-    --chart-1: 255 91% 76%;
-    --chart-2: 270 95% 75%;
-    --chart-3: 234 89% 73%;
-    --chart-4: 258 89% 66%;
-    --chart-5: 240 3% 46%;
+    --chart-1: 27 95% 60%;
+    --chart-2: 43 96% 56%;
+    --chart-3: 47 95% 53%;
+    --chart-4: 24 94% 53%;
+    --chart-5: 0 0% 45%;
     --sidebar: 0 0% 98%;
-    --font-sans: 'Montserrat', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
-    --font-serif: 'Cormorant Garamond', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
-    --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    --font-sans: 'Roboto', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+    --font-serif: 'Libre Caslon Text', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+    --font-mono: 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
     --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
     --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
     --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
@@ -104,26 +107,26 @@ All colors MUST be HSL.
 
   .dark {
     /* Same as light mode - Cosmic Temple is always divine */
-    --background: 240 5% 10%;
+    --background: 0 0% 9%;
     --foreground: 0 0% 98%;
-    --card: 240 3% 15%;
+    --card: 0 0% 14%;
     --card-foreground: 0 0% 98%;
-    --popover: 240 5% 26%;
+    --popover: 0 0% 25%;
     --popover-foreground: 0 0% 98%;
-    --primary: 255 91% 76%;
-    --primary-foreground: 261 72% 22%;
+    --primary: 27 95% 60%;
+    --primary-foreground: 12 81% 14%;
     --primary-hover: 277 100% 35%;
-    --secondary: 240 3% 46%;
+    --secondary: 0 0% 45%;
     --secondary-foreground: 0 0% 98%;
-    --accent: 273 86% 20%;
-    --accent-foreground: 270 95% 75%;
+    --accent: 20 91% 14%;
+    --accent-foreground: 43 96% 56%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 85% 97%;
-    --muted: 240 3% 46%;
+    --muted: 0 0% 45%;
     --muted-foreground: 0 0% 98%;
-    --border: 240 5% 33%;
-    --input: 240 5% 33%;
-    --ring: 255 91% 76%;
+    --border: 0 0% 32%;
+    --input: 0 0% 32%;
+    --ring: 27 95% 60%;
     --gradient-primary: linear-gradient(135deg, hsl(0 0% 0%) 0%, hsl(280 100% 9%) 50%, hsl(277 100% 30%) 100%);
     --gradient-button: linear-gradient(135deg, hsl(277 100% 30%) 0%, hsl(320 100% 50%) 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(280 100% 9%) 0%, hsl(277 100% 20%) 100%);
@@ -135,18 +138,18 @@ All colors MUST be HSL.
     --glow-divine: 0 0 80px hsl(277 100% 30% / 0.4), 0 0 120px hsl(320 100% 50% / 0.3), 0 0 160px hsl(277 100% 30% / 0.2);
     --sidebar-background: 280 100% 9%;
     --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 255 91% 76%;
-    --sidebar-primary-foreground: 261 72% 22%;
-    --sidebar-accent: 270 95% 75%;
-    --sidebar-accent-foreground: 273 86% 20%;
-    --sidebar-border: 240 5% 33%;
-    --sidebar-ring: 255 91% 76%;
-    --chart-1: 252 94% 85%;
-    --chart-2: 269 97% 85%;
-    --chart-3: 229 93% 81%;
-    --chart-4: 255 91% 76%;
-    --chart-5: 240 3% 46%;
-    --sidebar: 240 3% 15%;
+    --sidebar-primary: 27 95% 60%;
+    --sidebar-primary-foreground: 12 81% 14%;
+    --sidebar-accent: 43 96% 56%;
+    --sidebar-accent-foreground: 20 91% 14%;
+    --sidebar-border: 0 0% 32%;
+    --sidebar-ring: 27 95% 60%;
+    --chart-1: 30 97% 72%;
+    --chart-2: 45 96% 64%;
+    --chart-3: 48 96% 76%;
+    --chart-4: 27 95% 60%;
+    --chart-5: 0 0% 45%;
+    --sidebar: 0 0% 14%;
     --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
     --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
     --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
