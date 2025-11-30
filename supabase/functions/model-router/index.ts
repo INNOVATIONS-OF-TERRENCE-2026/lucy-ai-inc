@@ -6,6 +6,12 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+// Privacy sanitizer
+function sanitizeError(error: unknown): string {
+  console.error('[INTERNAL ERROR]', error);
+  return "Lucy's response engine is temporarily busy. Please try again.";
+}
+
 const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
 
 serve(async (req) => {
@@ -39,8 +45,8 @@ serve(async (req) => {
     return await streamModelResponse(selectedModel, messages);
 
   } catch (error) {
-    console.error('model-router error:', error);
-    return new Response(JSON.stringify({ error: error instanceof Error ? error.message : 'Unknown error' }), {
+    console.error('[model-router] Internal error:', error);
+    return new Response(JSON.stringify({ error: sanitizeError(error) }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });

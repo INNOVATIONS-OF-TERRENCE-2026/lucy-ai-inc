@@ -124,9 +124,11 @@ Break down complex problems, verify your logic using current information, and sy
     });
 
   } catch (error) {
-    console.error('reasoning-engine error:', error);
+    console.error('[reasoning-engine] Internal error:', error);
+    const sanitizedError = "Advanced reasoning temporarily unavailable. Using standard response mode.";
     return new Response(JSON.stringify({ 
-      error: error instanceof Error ? error.message : 'Unknown error' 
+      error: sanitizedError,
+      reasoning: "I encountered a temporary issue with advanced reasoning. Let me provide a standard response instead."
     }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },

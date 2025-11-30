@@ -7,6 +7,12 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+// Privacy sanitizer
+function sanitizeError(error: unknown): string {
+  console.error('[INTERNAL ERROR]', error);
+  return "Context analysis temporarily unavailable. Your conversation continues normally.";
+}
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
@@ -127,9 +133,14 @@ Respond only with valid JSON.`
     });
 
   } catch (error) {
-    console.error('context-analyzer error:', error);
+    console.error('[context-analyzer] Internal error:', error);
     return new Response(JSON.stringify({ 
-      error: error instanceof Error ? error.message : 'Unknown error' 
+      error: sanitizeError(error),
+      topics: [],
+      preferences: {},
+      keyFacts: [],
+      suggestions: [],
+      unresolvedQuestions: []
     }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
